@@ -8,10 +8,10 @@ public class MazeObstacle : MonoBehaviour
     private void OnCoillsionEnter2D(Collision2D other)
     {
         //Reload scene only when colliding with player
-        if (other.gameObject.GetComponent<player>())
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        }
+        //if (other.gameObject.GetComponent<player>())
+        //{
+          //  SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        //}
     }
 }
 //
