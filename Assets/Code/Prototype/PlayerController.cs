@@ -11,8 +11,11 @@ public class PlayerController : MonoBehaviour
     //Configuration
     public float speed;
     public float rotationSpeed;
+    public int jumpsMax;
 
     //State Tracking
+    int jumpsLeft;
+
 
     // Methods
     void Start()
@@ -24,9 +27,13 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         //jump
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            transform.position += new Vector3(0, 0.02f, 0);
+            if(jumpsLeft > 0)
+            {
+                jumpsLeft--;
+                _rb.AddForce(Vector2.up * 8f, ForceMode2D.Impulse);
+            }
         }
 
         //Move Player Left
@@ -46,6 +53,24 @@ public class PlayerController : MonoBehaviour
         {
             //Use right as "forward" because our art faces to the right
             _rb.AddRelativeForce(Vector2.right * speed * Time.deltaTime);
+        }
+    }
+
+    private void OnCollisionStay2D(Collision2D other)
+    {
+        if(other.gameObject.layer == LayerMask.NameToLayer("Ground"))
+        {
+            RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, Vector2.down, 0.5f);
+            Debug.DrawRay(transform.position, Vector3.down * 0.7f);
+
+            for(int i = 0; i< hits.Length; i++)
+            {
+                RaycastHit2D hit = hits[i];
+                if(hit.collider.gameObject.layer == LayerMask.NameToLayer("Ground"))
+                {
+                    jumpsLeft = jumpsMax;
+                }
+            }
         }
     }
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class bound : MonoBehaviour
+public class Bound : MonoBehaviour
 {
     void OnTriggerEnter2D(Collider2D other){
         if (other.gameObject.GetComponent<PlayerController>()){
