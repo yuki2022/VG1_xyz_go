@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     Rigidbody2D _rb;
     public Transform aimPivot;
     public GameObject fireball;
+    SpriteRenderer sprite;
 
     //Configuration
     public float speed;
@@ -23,6 +24,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
+        sprite = GetComponent<SpriteRenderer>();
     }
 
 
@@ -41,6 +43,7 @@ public class PlayerController : MonoBehaviour
         //Move Player Left, dash when hold left shift
         if (Input.GetKey(KeyCode.A))
         {
+            sprite.flipX = true;
             if (Input.GetKey(KeyCode.LeftShift))
             {
                 _rb.AddForce(Vector2.left * 30f * Time.deltaTime, ForceMode2D.Impulse);
@@ -55,6 +58,7 @@ public class PlayerController : MonoBehaviour
         //Move Player Right, dash when hold left shift
         if (Input.GetKey(KeyCode.D))
         {
+            sprite.flipX = false;
             if (Input.GetKey(KeyCode.RightShift))
             {
                 _rb.AddForce(Vector2.right * 30f * Time.deltaTime, ForceMode2D.Impulse);
