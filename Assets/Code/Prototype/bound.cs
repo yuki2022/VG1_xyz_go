@@ -9,6 +9,5 @@ public class Bound : MonoBehaviour
         if (other.gameObject.GetComponent<PlayerController>()){
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
-    }
-    
+    }    
 }

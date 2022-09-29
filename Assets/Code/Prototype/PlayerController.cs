@@ -7,6 +7,8 @@ public class PlayerController : MonoBehaviour
 
     //Outlets
     Rigidbody2D _rb;
+    public Transform aimPivot;
+    public GameObject fireball;
 
     //Configuration
     public float speed;
@@ -41,7 +43,7 @@ public class PlayerController : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.LeftShift))
             {
-                _rb.AddForce(Vector2.left * 25f * Time.deltaTime, ForceMode2D.Impulse);
+                _rb.AddForce(Vector2.left * 30f * Time.deltaTime, ForceMode2D.Impulse);
             }
             else
             {
@@ -55,7 +57,7 @@ public class PlayerController : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.LeftShift))
             {
-                _rb.AddForce(Vector2.right * 25f * Time.deltaTime, ForceMode2D.Impulse);
+                _rb.AddForce(Vector2.right * 30f * Time.deltaTime, ForceMode2D.Impulse);
             }
             else
             {
@@ -64,12 +66,15 @@ public class PlayerController : MonoBehaviour
             
         }
 
-        //Thrust Forward (unfinished)
-        if (Input.GetKey(KeyCode.LeftShift))
-        {
-            //Use right as "forward" because our art faces to the right
-            _rb.AddRelativeForce(Vector2.right * speed * Time.deltaTime);
-        }
+        //Aim Toward Mouse
+        Vector3 mousePosition = Input.mousePosition;
+        Vector3 mousePositionInWorld = Camera.main.ScreenToWorldPoint(mousePosition);
+        Vector3 directionFromPlayerToMouse = mousePositionInWorld - transform.position;
+
+        float radiansToMouse = Mathf.Atan2(directionFromPlayerToMouse.y, directionFromPlayerToMouse.x);
+        float angleToMouse = radiansToMouse * Mathf.Rad2Deg;
+
+        aimPivot.rotation = Quaternion.Euler(0, 0, angleToMouse);
     }
 
     private void OnCollisionStay2D(Collision2D other)
