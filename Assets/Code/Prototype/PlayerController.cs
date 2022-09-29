@@ -36,16 +36,32 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        //Move Player Left
+        //Move Player Left, dash when hold left shift
         if (Input.GetKey(KeyCode.A))
         {
-            _rb.AddForce(Vector2.left * 18f * Time.deltaTime, ForceMode2D.Impulse);
+            if (Input.GetKey(KeyCode.LeftShift))
+            {
+                _rb.AddForce(Vector2.left * 25f * Time.deltaTime, ForceMode2D.Impulse);
+            }
+            else
+            {
+                _rb.AddForce(Vector2.left * 15f * Time.deltaTime, ForceMode2D.Impulse);
+            }
+            
         }
 
-        //Move Player Right
+        //Move Player Right, dash when hold left shift
         if (Input.GetKey(KeyCode.D))
         {
-            _rb.AddForce(Vector2.right * 18f * Time.deltaTime, ForceMode2D.Impulse);
+            if (Input.GetKey(KeyCode.LeftShift))
+            {
+                _rb.AddForce(Vector2.right * 25f * Time.deltaTime, ForceMode2D.Impulse);
+            }
+            else
+            {
+                _rb.AddForce(Vector2.right * 15f * Time.deltaTime, ForceMode2D.Impulse);
+            }
+            
         }
 
         //Thrust Forward (unfinished)
