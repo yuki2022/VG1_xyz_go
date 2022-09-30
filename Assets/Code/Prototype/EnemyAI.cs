@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EnemyAI : MonoBehaviour
 {
@@ -53,4 +54,21 @@ public class EnemyAI : MonoBehaviour
         walkSpeed *= -1;
         mustPatrol = true;
     }
+
+
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.GetComponent<PlayerController>())
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+        if (other.gameObject.GetComponent<Projectile>())
+        {
+            Destroy(gameObject);
+        }
+
+    }
+
+
 }
+

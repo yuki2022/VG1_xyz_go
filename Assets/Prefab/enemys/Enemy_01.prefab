@@ -42,8 +42,8 @@ GameObject:
   - component: {fileID: 8012126751077767100}
   - component: {fileID: 8012126751077767101}
   - component: {fileID: 8012126751077767102}
-  - component: {fileID: 8012126751077767103}
   - component: {fileID: 8012126751077767091}
+  - component: {fileID: 4377563025021779936}
   m_Layer: 8
   m_Name: Enemy_01
   m_TagString: Untagged
@@ -139,8 +139,27 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!60 &8012126751077767103
+  m_Constraints: 4
+--- !u!114 &8012126751077767091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8012126751077767096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a460d8debf384d16861b353ecf54e1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mustPatrol: 0
+  rb: {fileID: 8012126751077767102}
+  walkSpeed: 50
+  groundCheckPos: {fileID: 8012126749875692764}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
+--- !u!60 &4377563025021779936
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -167,29 +186,10 @@ PolygonCollider2D:
     m_Paths:
     - - {x: -0.24285714, y: 0.34285715}
       - {x: -0.27142859, y: 0.32857144}
-      - {x: -0.24346542, y: -0.12857144}
-      - {x: -0.14468169, y: -0.35746235}
-      - {x: 0.20699091, y: -0.35746214}
-      - {x: 0.28541017, y: -0.19077995}
-      - {x: 0.2294836, y: 0.2139662}
+      - {x: -0.27142859, y: -0.12857144}
+      - {x: -0.22857143, y: -0.34285715}
+      - {x: 0.2, y: -0.34285715}
+      - {x: 0.27142859, y: -0.2857143}
+      - {x: 0.27142859, y: 0.22857143}
       - {x: 0.114285715, y: 0.34285715}
   m_UseDelaunayMesh: 0
---- !u!114 &8012126751077767091
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8012126751077767096}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a460d8debf384d16861b353ecf54e1a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mustPatrol: 0
-  rb: {fileID: 8012126751077767102}
-  walkSpeed: 50
-  groundCheckPos: {fileID: 8012126749875692764}
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 64

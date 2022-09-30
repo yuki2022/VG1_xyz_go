@@ -12,6 +12,7 @@ public class Projectile : MonoBehaviour
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _rigidbody2D.velocity = transform.right * 10f;
+        Destroy(gameObject, 3);
     }
 
     // Update is called once per frame
@@ -21,7 +22,7 @@ public class Projectile : MonoBehaviour
     }
 
     void OnCollisionEnter2D(Collision2D other)
-    {
+    { 
         Destroy(gameObject);
     }
 }
