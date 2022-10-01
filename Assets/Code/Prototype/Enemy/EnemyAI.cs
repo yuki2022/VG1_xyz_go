@@ -62,11 +62,6 @@ public class EnemyAI : MonoBehaviour
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
-        if (other.gameObject.GetComponent<Projectile>())
-        {
-            Destroy(gameObject);
-        }
-
     }
 
 

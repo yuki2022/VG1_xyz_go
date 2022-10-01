@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 8012126751077767102}
   - component: {fileID: 8012126751077767091}
   - component: {fileID: 4377563025021779936}
+  - component: {fileID: 3402428180204987723}
   m_Layer: 8
   m_Name: Enemy_01
   m_TagString: Untagged
@@ -193,3 +194,17 @@ PolygonCollider2D:
       - {x: 0.27142859, y: 0.22857143}
       - {x: 0.114285715, y: 0.34285715}
   m_UseDelaunayMesh: 0
+--- !u!114 &3402428180204987723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8012126751077767096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 066d22facf2304d148e0cfcd9d375410, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthMax: 5
+  trophy: {fileID: 2393927835449034923, guid: d9446086814c3e94da9ed60660af5542, type: 3}

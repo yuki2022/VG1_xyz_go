@@ -12,8 +12,6 @@ public class PlayerController : MonoBehaviour
     SpriteRenderer sprite;
 
     //Configuration
-    public float speed;
-    public float rotationSpeed;
     public int jumpsMax;
 
     //State Tracking

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Projectile : MonoBehaviour
+public class Fireball : MonoBehaviour
 {
     //Outlets
     Rigidbody2D _rigidbody2D;
@@ -13,12 +13,6 @@ public class Projectile : MonoBehaviour
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _rigidbody2D.velocity = transform.right * 10f;
         Destroy(gameObject, 3);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     void OnCollisionEnter2D(Collision2D other)
