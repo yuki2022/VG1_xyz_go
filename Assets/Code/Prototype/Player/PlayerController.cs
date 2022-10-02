@@ -115,7 +115,10 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.GetComponent<manaBottle>())
         {
-            mana++;
+            if (mana < manaMax)
+            {
+                mana++;
+            }               
         }
     }
 
