@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Fireball : MonoBehaviour
+public class IceCone : MonoBehaviour
 {
     //Outlets
     Rigidbody2D _rigidbody2D;

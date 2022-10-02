@@ -62,6 +62,11 @@ public class EnemyAI : MonoBehaviour
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
+
+        if (other.gameObject.tag == "ice")
+        {
+            walkSpeed = walkSpeed/2;
+        }
     }
 
 

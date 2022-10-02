@@ -3070,6 +3070,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2144921816297063336, guid: b625a794fb47bfb43a11b9632aaf43cc, type: 3}
+      propertyPath: icecone
+      value: 
+      objectReference: {fileID: 8915953816624361238, guid: 6ce36e6a4c9a27b45ba6d88487c4f04e, type: 3}
+    - target: {fileID: 2144921816297063336, guid: b625a794fb47bfb43a11b9632aaf43cc, type: 3}
+      propertyPath: manaMax
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2144921816297063336, guid: b625a794fb47bfb43a11b9632aaf43cc, type: 3}
       propertyPath: aimPivot
       value: 
       objectReference: {fileID: 1564380399}
@@ -3077,6 +3085,14 @@ PrefabInstance:
       propertyPath: fireball
       value: 
       objectReference: {fileID: 4624932896331129549, guid: a438d4b7bc72c4c44ba8a14d660a7089, type: 3}
+    - target: {fileID: 2144921816297063336, guid: b625a794fb47bfb43a11b9632aaf43cc, type: 3}
+      propertyPath: healthMax
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2144921816297063336, guid: b625a794fb47bfb43a11b9632aaf43cc, type: 3}
+      propertyPath: ToxicCloud
+      value: 
+      objectReference: {fileID: 6302180986880003825, guid: e73d9280e32544c47bfa851d295ac9b5, type: 3}
     - target: {fileID: 2144921816297063337, guid: b625a794fb47bfb43a11b9632aaf43cc, type: 3}
       propertyPath: m_Name
       value: Player

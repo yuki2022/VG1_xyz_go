@@ -30,6 +30,36 @@ public class Target : MonoBehaviour
                 newTrophy.transform.position = transform.position;
             }
         }
+
+        if (other.gameObject.GetComponent<IceCone>())
+        {
+            if (health > 0)
+            {
+                health--;
+            }
+            else
+            {
+                Destroy(gameObject);
+                GameObject newTrophy = Instantiate(trophy);
+                newTrophy.transform.position = transform.position;
+            }
+        }
     }
-    
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.GetComponent<ToxicCloud>())
+        {
+            if (health > 0)
+            {
+                health--;
+            }
+            else
+            {
+                Destroy(gameObject);
+                GameObject newTrophy = Instantiate(trophy);
+                newTrophy.transform.position = transform.position;
+            }
+        }
+    }
+
 }
