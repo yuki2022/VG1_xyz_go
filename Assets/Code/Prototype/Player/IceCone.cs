@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Projectile : MonoBehaviour
+public class IceCone : MonoBehaviour
 {
     //Outlets
     Rigidbody2D _rigidbody2D;
@@ -12,12 +12,7 @@ public class Projectile : MonoBehaviour
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _rigidbody2D.velocity = transform.right * 10f;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        Destroy(gameObject, 3);
     }
 
     void OnCollisionEnter2D(Collision2D other)

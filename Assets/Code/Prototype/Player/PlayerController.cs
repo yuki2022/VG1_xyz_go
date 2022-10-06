@@ -9,15 +9,19 @@ public class PlayerController : MonoBehaviour
     Rigidbody2D _rb;
     public Transform aimPivot;
     public GameObject fireball;
+    public GameObject icecone;
+    public GameObject ToxicCloud;
     SpriteRenderer sprite;
 
     //Configuration
-    public float speed;
-    public float rotationSpeed;
     public int jumpsMax;
+    public int healthMax;
+    public int manaMax;
 
     //State Tracking
     int jumpsLeft;
+    int health;
+    int mana;
 
 
     // Methods
@@ -25,6 +29,8 @@ public class PlayerController : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
+        health = healthMax;
+        mana = manaMax;
     }
 
 
@@ -80,12 +86,39 @@ public class PlayerController : MonoBehaviour
 
         aimPivot.rotation = Quaternion.Euler(0, 0, angleToMouse);
 
-        //Shoot
+        //Normal attack: fireball
         if (Input.GetMouseButtonDown(0))
         {
             GameObject newProjectile = Instantiate(fireball);
             newProjectile.transform.position = transform.position;
             newProjectile.transform.rotation = aimPivot.rotation;
+        }
+
+        //Ability 1: ice cone
+        if (Input.GetKeyDown(KeyCode.Q) & mana > 0)
+        {
+            mana--;
+            GameObject newProjectile = Instantiate(icecone);
+            newProjectile.transform.position = transform.position;
+            newProjectile.transform.rotation = aimPivot.rotation;
+        }
+
+        //Ability 2: toxic cloud
+        if (Input.GetKeyDown(KeyCode.W) & mana > 2)
+        {
+            mana -= 3;
+            GameObject newProjectile = Instantiate(ToxicCloud);
+            newProjectile.transform.position = transform.position;
+        }
+    }
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.GetComponent<manaBottle>())
+        {
+            if (mana < manaMax)
+            {
+                mana++;
+            }               
         }
     }
 
