@@ -1,32 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-namespace Platformer
+
+<<<<<<<< HEAD:Assets/Code/Prototype/Player/IceCone.cs
+public class IceCone : MonoBehaviour
+========
+public class Fireball : MonoBehaviour
+>>>>>>>> 0736e919deec8f1f812814ef05a7afa163abd2e9:Assets/Code/Prototype/Player/Fireball.cs
 {
-    public class Fireball : MonoBehaviour
+    //Outlets
+    Rigidbody2D _rigidbody2D;
+
+    // Start is called before the first frame update
+    void Start()
     {
-        //Outlets
-        Rigidbody2D _rigidbody2D;
+        _rigidbody2D = GetComponent<Rigidbody2D>();
+        _rigidbody2D.velocity = transform.right * 10f;
+        Destroy(gameObject, 3);
+    }
 
-        // Start is called before the first frame update
-        void Start()
-        {
-            _rigidbody2D = GetComponent<Rigidbody2D>();
-            _rigidbody2D.velocity = transform.right * 10f;
-            Destroy(gameObject, 3);
-        }
-
-        void OnCollisionEnter2D(Collision2D other)
-        {
-            if (other.gameObject.GetComponent<Target>())
-            {
-                SoundManager.instance.PlaySoundHit();
-            }
-            else if (other.gameObject.layer == LayerMask.NameToLayer("Ground"))
-            {
-                SoundManager.instance.PlaySoundMiss();
-            }
-            Destroy(gameObject);
-        }
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        Destroy(gameObject);
     }
 }
