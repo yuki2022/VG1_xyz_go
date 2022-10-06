@@ -1,65 +1,72 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class Target : MonoBehaviour
+namespace Platformer
 {
-    //Configuration
-    public int healthMax;
-    public GameObject trophy;
-
-    //State Tracking
-    public int health;
-
-    void Start()
+    public class Target : MonoBehaviour
     {
-        health = healthMax;
-    }
+        //Configuration
+        public int healthMax;
+        public GameObject trophy;
 
-    void OnCollisionEnter2D(Collision2D other) {
-       
-        if (other.gameObject.GetComponent<Fireball>()) {
-            if (health > 0)
-            {
-                health--;
-            }
-            else
-            {
-                Destroy(gameObject);
-                GameObject newTrophy = Instantiate(trophy);
-                newTrophy.transform.position = transform.position;
-            }
-        }
+        //State Tracking
+        public int health;
 
-        if (other.gameObject.GetComponent<IceCone>())
+        void Start()
         {
-            if (health > 0)
-            {
-                health--;
-            }
-            else
-            {
-                Destroy(gameObject);
-                GameObject newTrophy = Instantiate(trophy);
-                newTrophy.transform.position = transform.position;
-            }
+            health = healthMax;
         }
-    }
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.gameObject.GetComponent<ToxicCloud>())
-        {
-            if (health > 0)
-            {
-                health--;
-            }
-            else
-            {
-                Destroy(gameObject);
-                GameObject newTrophy = Instantiate(trophy);
-                newTrophy.transform.position = transform.position;
-            }
-        }
-    }
 
+        void OnCollisionEnter2D(Collision2D other)
+        {
+
+            if (other.gameObject.GetComponent<Fireball>())
+            {
+                PlayerController.instance.score++;
+                if (health > 0)
+                {
+                    health--;
+                }
+                else
+                {
+                    Destroy(gameObject);
+                    GameObject newTrophy = Instantiate(trophy);
+                    newTrophy.transform.position = transform.position;
+                }
+            }
+
+            if (other.gameObject.GetComponent<IceCone>())
+            {
+                PlayerController.instance.score++;
+                if (health > 0)
+                {
+                    health--;
+                }
+                else
+                {
+                    Destroy(gameObject);
+                    GameObject newTrophy = Instantiate(trophy);
+                    newTrophy.transform.position = transform.position;
+                }
+            }
+        }
+        void OnTriggerEnter2D(Collider2D other)
+        {
+            PlayerController.instance.score++;
+            if (other.gameObject.GetComponent<ToxicCloud>())
+            {
+                if (health > 0)
+                {
+                    health--;
+                }
+                else
+                {
+                    Destroy(gameObject);
+                    GameObject newTrophy = Instantiate(trophy);
+                    newTrophy.transform.position = transform.position;
+                }
+            }
+        }
+
+    }
 }
