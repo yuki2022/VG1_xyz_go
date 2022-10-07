@@ -25,5 +25,7 @@ public class Fireball : MonoBehaviour
             SoundManager.instance.PlaySoundMiss();
         }
         Destroy(gameObject);
+
+        PlayerController.instance.EarnPoints(10);
     }
 }

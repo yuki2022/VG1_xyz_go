@@ -14,17 +14,19 @@ public class PlayerController : MonoBehaviour
     public GameObject ToxicCloud;
     SpriteRenderer sprite;
     public TMP_Text textScore;
+    public TMP_Text textMoney;
 
     //Configuration
     public int jumpsMax;
     public int healthMax;
     public int manaMax;
+    public int score;
+    public int money;
 
     //State Tracking
     int jumpsLeft;
     int health;
     int mana;
-    int score;
 
 
     // Methods
@@ -34,6 +36,8 @@ public class PlayerController : MonoBehaviour
         sprite = GetComponent<SpriteRenderer>();
         health = healthMax;
         mana = manaMax;
+        score = 0;
+        money = 0;
     }
 
     void Awake()
@@ -42,9 +46,7 @@ public class PlayerController : MonoBehaviour
     }
     void Update()
     {
-        //UpdateUI
-        //scoreUI.text = score.ToString();
-
+        UpdateDisplay();
         //jump
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -147,5 +149,15 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void EarnPoints(int pointAmount) {
+        score += pointAmount;
+        money += pointAmount;
+    }
+
+    void UpdateDisplay() {
+        //textScore.text = score.ToString();
+        //textMoney.text = money.ToString();
     }
 }
