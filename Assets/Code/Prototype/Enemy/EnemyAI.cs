@@ -12,12 +12,16 @@ public class EnemyAI : MonoBehaviour
     public float walkSpeed;
     public Transform groundCheckPos;
     public LayerMask groundLayer;
+    public GameObject EnemyBullet;
 
     private bool mustTurn;
-
+    float fireRate;
+    float nextFire;
     void Start()
     {
         mustPatrol = true;
+        fireRate = 5f;
+        nextFire = Time.time+5f;
     }
 
     // Update is called once per frame
@@ -27,6 +31,7 @@ public class EnemyAI : MonoBehaviour
         {
             Patrol();
         }
+        CheckIfTimetToFire();
     }
 
     private void FixedUpdate()
@@ -55,17 +60,29 @@ public class EnemyAI : MonoBehaviour
         mustPatrol = true;
     }
 
+    void CheckIfTimetToFire()
+    {
+        if (Time.time > nextFire)
+        {
+            GameObject newProjectile = Instantiate(EnemyBullet);
+            newProjectile.transform.position = transform.position;
+            newProjectile.transform.rotation = Quaternion.identity;
+            nextFire = Time.time + fireRate;
+        }
+    }
 
     void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.GetComponent<PlayerController>())
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
+            Destroy(gameObject);
         }
 
         if (other.gameObject.tag == "ice")
         {
             walkSpeed = walkSpeed/2;
+            fireRate = 1000f;
         }
     }
 

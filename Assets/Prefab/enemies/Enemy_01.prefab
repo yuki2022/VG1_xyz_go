@@ -160,6 +160,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
+  EnemyBullet: {fileID: 7997605341090860911, guid: 3780c7b4177444966b6c7a169b310fd4, type: 3}
 --- !u!60 &4377563025021779936
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -208,3 +209,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthMax: 5
   trophy: {fileID: 2393927835449034923, guid: d9446086814c3e94da9ed60660af5542, type: 3}
+  health: 0
