@@ -6,6 +6,9 @@ MonoImporter:
   defaultReferences:
   - aimPivot: {instanceID: 0}
   - fireball: {fileID: 4624932896331129549, guid: a438d4b7bc72c4c44ba8a14d660a7089, type: 3}
+  - icecone: {fileID: 8915953816624361238, guid: 6ce36e6a4c9a27b45ba6d88487c4f04e, type: 3}
+  - ToxicCloud: {fileID: 6302180986880003825, guid: e73d9280e32544c47bfa851d295ac9b5, type: 3}
+  - textScore: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

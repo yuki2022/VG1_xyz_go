@@ -1,32 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-namespace Platformer
+
+public class Fireball : MonoBehaviour
 {
-    public class Fireball : MonoBehaviour
+    //Outlets
+    Rigidbody2D _rigidbody2D;
+
+    // Start is called before the first frame update
+    void Start()
     {
-        //Outlets
-        Rigidbody2D _rigidbody2D;
+        _rigidbody2D = GetComponent<Rigidbody2D>();
+        _rigidbody2D.velocity = transform.right * 10f;
+        Destroy(gameObject, 3);
+    }
 
-        // Start is called before the first frame update
-        void Start()
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.GetComponent<EnemyAI>())
         {
-            _rigidbody2D = GetComponent<Rigidbody2D>();
-            _rigidbody2D.velocity = transform.right * 10f;
-            Destroy(gameObject, 3);
+            SoundManager.instance.PlaySoundHit();
         }
-
-        void OnCollisionEnter2D(Collision2D other)
-        {
-            if (other.gameObject.GetComponent<Target>())
-            {
-                SoundManager.instance.PlaySoundHit();
-            }
-            else if (other.gameObject.layer == LayerMask.NameToLayer("Ground"))
-            {
-                SoundManager.instance.PlaySoundMiss();
-            }
-            Destroy(gameObject);
+        else if(other.gameObject.layer == LayerMask.NameToLayer("Ground")){
+            SoundManager.instance.PlaySoundMiss();
         }
+        Destroy(gameObject);
     }
 }
