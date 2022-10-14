@@ -9,6 +9,7 @@ using UnityEngine;
         AudioSource audioSource;
         public AudioClip missSound;
         public AudioClip hitSound;
+        public AudioClip healSound;
 
         void Awake()
         {
@@ -33,4 +34,8 @@ using UnityEngine;
         {
             audioSource.PlayOneShot(missSound);
         }
-    }
+        public void PlaySoundHeal()
+        {
+            audioSource.PlayOneShot(healSound);
+        }
+}

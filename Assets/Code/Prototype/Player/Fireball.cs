@@ -12,12 +12,12 @@ public class Fireball : MonoBehaviour
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _rigidbody2D.velocity = transform.right * 10f;
-        Destroy(gameObject, 3);
+        Destroy(gameObject, 0.5f);
     }
 
     void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.GetComponent<EnemyAI>())
+        if (other.gameObject.GetComponent<Target>())
         {
             SoundManager.instance.PlaySoundHit();
         }

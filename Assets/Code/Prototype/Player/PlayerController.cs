@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class PlayerController : MonoBehaviour
     SpriteRenderer sprite;
     public TMP_Text textScore;
     public TMP_Text textMoney;
+    public HP_Bar healthbar;
 
     //Configuration
     public int jumpsMax;
@@ -22,11 +24,13 @@ public class PlayerController : MonoBehaviour
     public int manaMax;
     public int score;
     public int money;
-
+    public float fireRate = 0.5f;
+    float nextFire = 0f;
     //State Tracking
     int jumpsLeft;
-    int health;
+    public int health;
     int mana;
+
 
 
     // Methods
@@ -34,6 +38,7 @@ public class PlayerController : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
+        
         health = healthMax;
         mana = manaMax;
         score = 0;
@@ -48,6 +53,7 @@ public class PlayerController : MonoBehaviour
     {
         UpdateDisplay();
         //jump
+
         if (Input.GetKeyDown(KeyCode.Space))
         {
             if(jumpsLeft > 0)
@@ -98,8 +104,9 @@ public class PlayerController : MonoBehaviour
         aimPivot.rotation = Quaternion.Euler(0, 0, angleToMouse);
 
         //Normal attack: fireball
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && Time.time >nextFire)
         {
+            nextFire = Time.time + fireRate;
             GameObject newProjectile = Instantiate(fireball);
             newProjectile.transform.position = transform.position;
             newProjectile.transform.rotation = aimPivot.rotation;
@@ -131,6 +138,20 @@ public class PlayerController : MonoBehaviour
                 mana++;
             }               
         }
+
+        if (other.gameObject.GetComponent<EnemyBullet>() || other.gameObject.GetComponent<EnemyAI>())
+        {
+            if (health > 1)
+            {
+                health--;
+                healthbar.Sethealth(health);
+            }
+            else
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            }
+        }
+
     }
 
     private void OnCollisionStay2D(Collision2D other)
@@ -149,6 +170,8 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
+
+
     }
 
     public void EarnPoints(int pointAmount) {
