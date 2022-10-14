@@ -15,7 +15,6 @@ public class PlayerController : MonoBehaviour
     public GameObject ToxicCloud;
     SpriteRenderer sprite;
     public TMP_Text textScore;
-    public TMP_Text textMoney;
     public HP_Bar healthbar;
 
     //Configuration
@@ -23,7 +22,6 @@ public class PlayerController : MonoBehaviour
     public int healthMax;
     public int manaMax;
     public int score;
-    public int money;
     public float fireRate = 0.5f;
     float nextFire = 0f;
     //State Tracking
@@ -42,7 +40,6 @@ public class PlayerController : MonoBehaviour
         health = healthMax;
         mana = manaMax;
         score = 0;
-        money = 0;
     }
 
     void Awake()
@@ -51,9 +48,10 @@ public class PlayerController : MonoBehaviour
     }
     void Update()
     {
+     
         UpdateDisplay();
-        //jump
 
+        //jump
         if (Input.GetKeyDown(KeyCode.Space))
         {
             if(jumpsLeft > 0)
@@ -176,11 +174,10 @@ public class PlayerController : MonoBehaviour
 
     public void EarnPoints(int pointAmount) {
         score += pointAmount;
-        money += pointAmount;
     }
 
-    void UpdateDisplay() {
-        //textScore.text = score.ToString();
-        //textMoney.text = money.ToString();
+    void UpdateDisplay()
+    {
+        //textScore.text = score.ToString();//textMoney.text = money.ToString();
     }
 }

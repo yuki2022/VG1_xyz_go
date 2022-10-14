@@ -25,7 +25,7 @@ public class Target : MonoBehaviour
             }
             else
             {
-                //PlayerController.instance.score++;
+                PlayerController.instance.score++;
                 Destroy(gameObject);
                 GameObject newTrophy = Instantiate(trophy);
                 newTrophy.transform.position = transform.position;
@@ -40,7 +40,7 @@ public class Target : MonoBehaviour
             }
             else
             {
-                //PlayerController.instance.score++;
+                PlayerController.instance.score++;
                 Destroy(gameObject);
                 GameObject newTrophy = Instantiate(trophy);
                 newTrophy.transform.position = transform.position;
@@ -57,7 +57,7 @@ public class Target : MonoBehaviour
             }
             else
             {
-                //PlayerController.instance.score++;
+                PlayerController.instance.score++;
                 Destroy(gameObject);
                 GameObject newTrophy = Instantiate(trophy);
                 newTrophy.transform.position = transform.position;
