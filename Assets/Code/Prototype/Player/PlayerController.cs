@@ -137,11 +137,23 @@ public class PlayerController : MonoBehaviour
             }               
         }
 
-        if (other.gameObject.GetComponent<EnemyBullet>() || other.gameObject.GetComponent<EnemyAI>())
+        if (other.gameObject.GetComponent<EnemyBullet>())
         {
             if (health > 1)
             {
                 health--;
+                healthbar.Sethealth(health);
+            }
+            else
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            }
+        }
+        if (other.gameObject.GetComponent<EnemyAI>())
+        {
+            if (health > 4)
+            {
+                health=health-3;
                 healthbar.Sethealth(health);
             }
             else
