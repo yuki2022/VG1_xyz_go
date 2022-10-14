@@ -142,6 +142,7 @@ public class PlayerController : MonoBehaviour
             if (health > 1)
             {
                 health--;
+                
                 healthbar.Sethealth(health);
             }
             else
@@ -154,6 +155,7 @@ public class PlayerController : MonoBehaviour
             if (health > 4)
             {
                 health=health-3;
+                SoundManager.instance.PlaySoundHurt();
                 healthbar.Sethealth(health);
             }
             else

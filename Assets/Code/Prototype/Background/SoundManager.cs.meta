@@ -6,6 +6,8 @@ MonoImporter:
   defaultReferences:
   - missSound: {fileID: 8300000, guid: 82f3762f44fbd47c3949b20519392bdd, type: 3}
   - hitSound: {fileID: 8300000, guid: 321cfb91058e64d8d8b8c588f2c9b483, type: 3}
+  - healSound: {instanceID: 0}
+  - hurtSound: {fileID: 8300000, guid: 2a10d4a7f7c40423f873381ea8af425e, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
