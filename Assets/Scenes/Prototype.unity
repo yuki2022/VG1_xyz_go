@@ -5423,7 +5423,7 @@ MonoBehaviour:
   missSound: {fileID: 8300000, guid: 82f3762f44fbd47c3949b20519392bdd, type: 3}
   hitSound: {fileID: 8300000, guid: 321cfb91058e64d8d8b8c588f2c9b483, type: 3}
   healSound: {fileID: 8300000, guid: cfce0cea076109f478783201b2a9f57f, type: 3}
-  hurtSound: {fileID: 0}
+  hurtSound: {fileID: 8300000, guid: 2a10d4a7f7c40423f873381ea8af425e, type: 3}
 --- !u!4 &2057789232
 Transform:
   m_ObjectHideFlags: 0
