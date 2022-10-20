@@ -4,8 +4,10 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
 
+
 public class PlayerController : MonoBehaviour
 {
+//    MenuController menuControllerComponent;
     public static PlayerController instance;
     //Outlets
     Rigidbody2D _rb;
@@ -34,6 +36,7 @@ public class PlayerController : MonoBehaviour
     // Methods
     void Start()
     {
+        
         _rb = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
         
@@ -48,7 +51,11 @@ public class PlayerController : MonoBehaviour
     }
     void Update()
     {
-     
+
+        //Escape-->menu
+        if (Input.GetKeyDown(KeyCode.K)) {
+            MenuController.instance.Show();
+        }
         UpdateDisplay();
 
         //jump
@@ -137,11 +144,25 @@ public class PlayerController : MonoBehaviour
             }               
         }
 
-        if (other.gameObject.GetComponent<EnemyBullet>() || other.gameObject.GetComponent<EnemyAI>())
+        if (other.gameObject.GetComponent<EnemyBullet>())
         {
             if (health > 1)
             {
                 health--;
+                
+                healthbar.Sethealth(health);
+            }
+            else
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            }
+        }
+        if (other.gameObject.GetComponent<EnemyAI>())
+        {
+            if (health > 4)
+            {
+                health=health-3;
+                SoundManager.instance.PlaySoundHurt();
                 healthbar.Sethealth(health);
             }
             else

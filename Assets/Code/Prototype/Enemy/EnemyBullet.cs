@@ -30,7 +30,7 @@ public class EnemyBullet : MonoBehaviour
     {
         if (collision.gameObject.GetComponent<PlayerController>())
         {
-            
+            SoundManager.instance.PlaySoundHurt();
         }
         Destroy(gameObject);
     }
