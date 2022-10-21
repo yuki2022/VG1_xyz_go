@@ -15,13 +15,12 @@ public class EnemyAI : MonoBehaviour
     public GameObject EnemyBullet;
 
     private bool mustTurn;
-    float fireRate;
+    public float fireRate;
     float nextFire;
     void Start()
     {
         mustPatrol = true;
-        fireRate = 5f;
-        nextFire = Time.time+5f;
+        nextFire = Time.time+fireRate;
     }
 
     // Update is called once per frame
@@ -38,7 +37,7 @@ public class EnemyAI : MonoBehaviour
     {
         if (mustPatrol)
         {
-            mustTurn = !Physics2D.OverlapCircle(groundCheckPos.position, 0.1f, groundLayer);
+            mustTurn = !Physics2D.OverlapCircle(groundCheckPos.position, 0.2f, groundLayer);
         }
     }
 

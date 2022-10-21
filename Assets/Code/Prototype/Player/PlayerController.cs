@@ -30,7 +30,7 @@ public class PlayerController : MonoBehaviour
     int jumpsLeft;
     public int health;
     int mana;
-
+    public Vector3 currentCheckpoint;
 
 
     // Methods
@@ -39,7 +39,7 @@ public class PlayerController : MonoBehaviour
         
         _rb = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
-        
+        currentCheckpoint = transform.position;
         health = healthMax;
         mana = manaMax;
         score = 0;
@@ -154,7 +154,9 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                transform.position = currentCheckpoint;
+                health = healthMax;
+                healthbar.Sethealth(health);
             }
         }
         if (other.gameObject.GetComponent<EnemyAI>())
@@ -167,10 +169,21 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                transform.position = currentCheckpoint;
+                health = healthMax;
+                healthbar.Sethealth(health);
             }
         }
 
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.transform.tag == "Checkpoint")
+        {
+            currentCheckpoint = collision.transform.position;
+            collision.GetComponent<Collider2D>().enabled = false;
+        }
     }
 
     private void OnCollisionStay2D(Collision2D other)
