@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
 {
 //    MenuController menuControllerComponent;
     public static PlayerController instance;
+
     //Outlets
     Rigidbody2D _rb;
     public Transform aimPivot;
@@ -26,6 +27,7 @@ public class PlayerController : MonoBehaviour
     public int score;
     public float fireRate = 0.5f;
     float nextFire = 0f;
+
     //State Tracking
     int jumpsLeft;
     public int health;
@@ -175,6 +177,20 @@ public class PlayerController : MonoBehaviour
             }
         }
 
+        if (other.gameObject.layer == LayerMask.NameToLayer("Trophy"))
+        {
+            //  GameObject otherClone = Instantiate(other.gameObject);
+            BackPack.instance.trophies.Add(other.gameObject);
+            Destroy(other.gameObject);
+        }
+
+        if (other.gameObject.layer == LayerMask.NameToLayer("Prop"))
+        {
+            GameObject otherClone = Instantiate(other.gameObject);
+            BackPack.instance.props.Add(other.gameObject);
+            Destroy(other.gameObject);
+        }
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -202,8 +218,6 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
-
-
     }
 
     public void EarnPoints(int pointAmount) {
