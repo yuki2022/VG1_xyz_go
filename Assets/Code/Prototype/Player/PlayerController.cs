@@ -148,10 +148,11 @@ public class PlayerController : MonoBehaviour
         {
             health ++;
             BackPack.instance.RemoveProp(1);
+            healthbar.Sethealth(health);
         }
 
         //Prop 2: mana bottle
-        if (Input.GetKeyDown(KeyCode.Alpha1) && BackPack.instance.hasprop(2) && mana < manaMax)
+        if (Input.GetKeyDown(KeyCode.Alpha2) && BackPack.instance.hasprop(2) && mana < manaMax)
         {
             mana++;
             BackPack.instance.RemoveProp(2);
@@ -196,34 +197,34 @@ public class PlayerController : MonoBehaviour
         {
             if (other.gameObject.GetComponent<trophy1>())
             {
-                BackPack.instance.AddTrophy(0);
+                BackPack.instance.AddTrophy(1);
             }
             else if (other.gameObject.GetComponent<trophy2>()) {
-                BackPack.instance.AddTrophy(1);
+                BackPack.instance.AddTrophy(2);
             }
             else if (other.gameObject.GetComponent<trophy3>())
             {
-                BackPack.instance.AddTrophy(2);
+                BackPack.instance.AddTrophy(3);
             }
             else if (other.gameObject.GetComponent<trophy4>())
             {
-                BackPack.instance.AddTrophy(3);
+                BackPack.instance.AddTrophy(4);
             }
             else if (other.gameObject.GetComponent<trophy5>())
             {
-                BackPack.instance.AddTrophy(4);
+                BackPack.instance.AddTrophy(5);
             }
             else if (other.gameObject.GetComponent<trophy6>())
             {
-                BackPack.instance.AddTrophy(5);
+                BackPack.instance.AddTrophy(6);
             }
             else if (other.gameObject.GetComponent<trophy7>())
             {
-                BackPack.instance.AddTrophy(6);
+                BackPack.instance.AddTrophy(7);
             }
             else if (other.gameObject.GetComponent<trophy8>())
             {
-                BackPack.instance.AddTrophy(7);
+                BackPack.instance.AddTrophy(8);
             }
 
             Destroy(other.gameObject);
@@ -233,18 +234,10 @@ public class PlayerController : MonoBehaviour
         {
             if (other.gameObject.GetComponent<manaBottle>())
             {
-                if (mana < manaMax)
-                {
-                    mana++;
-                }
                 BackPack.instance.AddProp(1);
             }
             else if (other.gameObject.GetComponent<healthBottle>())
             {
-                if (health < healthMax)
-                {
-                    health++;
-                }
                 BackPack.instance.AddProp(2);
             }
             else if (other.gameObject.GetComponent<EXPBottle>())

@@ -32,6 +32,7 @@ public class BackPack : MonoBehaviour
 
     public void AddTrophy(int x)
     {
+        x--;
         mytrophies.Enqueue(x);
     }
 
@@ -43,16 +44,19 @@ public class BackPack : MonoBehaviour
 
     public void AddProp(int x)
     {
+        x--;
         myprops[x] ++;
     }
 
     public void RemoveProp(int x)
     {
+        x--;
         myprops[x] --;
     }
 
     public bool hasprop(int x)
     {
+        x--;
         return myprops[x] > 0;
     }
 }
