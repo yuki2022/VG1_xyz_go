@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 70
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -2174,21 +2174,21 @@ TextureImporter:
       trophies1_62: -1905366449
       trophies1_33: -816860368
       trophies1_77: -114573814
-      trophies1_30: -1900621803
       trophies1_72: 2050061504
-      trophies1_41: 694544886
-      trophies1_58: 777861921
+      trophies1_30: -1900621803
       trophies1_29: -668457534
       trophies1_42: 1598781475
-      trophies1_51: 56687476
+      trophies1_41: 694544886
       trophies1_10: -387764961
+      trophies1_51: 56687476
       trophies1_39: -2003719027
-      trophies1_75: -524839184
+      trophies1_91: 849008220
       trophies1_76: 1441004768
       trophies1_64: -2129706856
       trophies1_32: 1993921834
       trophies1_7: -1979550041
       trophies1_43: 756285249
+      trophies1_75: -524839184
       trophies1_11: 1575321059
       trophies1_65: 1812291587
       trophies1_60: 1216102795
@@ -2196,6 +2196,7 @@ TextureImporter:
       trophies1_17: -292123175
       trophies1_48: -1093578648
       trophies1_92: -182886511
+      trophies1_58: 777861921
       trophies1_0: -352304625
       trophies1_88: 467612062
       trophies1_94: -1185057426
@@ -2208,7 +2209,6 @@ TextureImporter:
       trophies1_78: 219818083
       trophies1_53: -965607627
       trophies1_22: -620137403
-      trophies1_91: 849008220
       trophies1_9: 114513620
       trophies1_46: -447960702
       trophies1_86: 1949294502
