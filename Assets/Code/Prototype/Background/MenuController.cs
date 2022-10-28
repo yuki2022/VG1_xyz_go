@@ -15,11 +15,19 @@ using UnityEngine.SceneManagement;
         public void Show() {
             ShowMainMenu();
             gameObject.SetActive(true);
+            Time.timeScale = 0;
+            PlayerController.instance.isPaused = true;
         }
 
         public void Hide()
         {
             gameObject.SetActive(false);
+            Time.timeScale = 1;
+        if (PlayerController.instance != null)
+        {
+            PlayerController.instance.isPaused = false;
+        }
+
         }
         //Outlets
         public GameObject mainMenu;

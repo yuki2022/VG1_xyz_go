@@ -27,6 +27,8 @@ public class PlayerController : MonoBehaviour
     public int score;
     public float fireRate = 0.5f;
     float nextFire = 0f;
+    public bool isPaused;
+
 
     //State Tracking
     int jumpsLeft;
@@ -53,6 +55,11 @@ public class PlayerController : MonoBehaviour
     }
     void Update()
     {
+        //pause
+        if (isPaused)
+        {
+            return;
+        }
 
         //Escape-->menu
         if (Input.GetKeyDown(KeyCode.K)) {
@@ -226,6 +233,6 @@ public class PlayerController : MonoBehaviour
 
     void UpdateDisplay()
     {
-        //textScore.text = score.ToString();//textMoney.text = money.ToString();
+        textScore.text = score.ToString();//textMoney.text = money.ToString();
     }
 }
