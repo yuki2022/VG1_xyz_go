@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
     public class MenuController : MonoBehaviour
     {
         public static MenuController instance;
@@ -58,5 +60,9 @@ using UnityEngine;
         public void ShowLevelMenu()
         {
             SwitchMenu(levelMenu);
+        }
+
+        public void LoadLevel() {
+            SceneManager.LoadScene (SceneManager.GetActiveScene().name);
         }
     }

@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 3402428180204987723}
   - component: {fileID: -6409834666350386726}
   m_Layer: 8
-  m_Name: Enemy_01
+  m_Name: Enemy_01 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -109,7 +109,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 938883856, guid: 21a1fe496cca24d43a26bd3784ccade0, type: 3}
+  m_Sprite: {fileID: 1930243324, guid: 21a1fe496cca24d43a26bd3784ccade0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -161,7 +161,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   EnemyBullet: {fileID: 7997605341090860911, guid: 3780c7b4177444966b6c7a169b310fd4, type: 3}
-  fireRate: 5
+  fireRate: 3
 --- !u!114 &3402428180204987723
 MonoBehaviour:
   m_ObjectHideFlags: 0

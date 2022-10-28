@@ -5,9 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class Bound : MonoBehaviour
 {
+    public PlayerController player;
     void OnTriggerEnter2D(Collider2D other){
         if (other.gameObject.GetComponent<PlayerController>()){
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            player.transform.position = player.currentCheckpoint;
+            player.health = player.healthMax;
+            player.healthbar.Sethealth(player.health);
         }
     }    
 }
