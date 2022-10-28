@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 6967996226009968112}
   - component: {fileID: 944476406935948563}
   - component: {fileID: 6935293912782271500}
+  - component: {fileID: -6803189753551423748}
+  - component: {fileID: 8724187379797207003}
   m_Layer: 11
   m_Name: trophies3
   m_TagString: Untagged
@@ -32,7 +34,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 38
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6967996226009968112
 SpriteRenderer:
@@ -124,3 +126,36 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.45714286, y: 0.45714286}
   m_EdgeRadius: 0
+--- !u!50 &-6803189753551423748
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6967996226009968113}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!114 &8724187379797207003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6967996226009968113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 047cc179074dcd048836053d7dd5e8b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

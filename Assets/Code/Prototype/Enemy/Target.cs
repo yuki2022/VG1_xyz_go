@@ -6,14 +6,14 @@ public class Target : MonoBehaviour
 {
     //Configuration
     public int healthMax;
-    public GameObject trophy;
+    public GameObject[] trophies;
 
     //State Tracking
     public int health;
 
     void Start()
     {
-        health = healthMax;
+        health = healthMax;        
     }
 
     void OnCollisionEnter2D(Collision2D other) {
@@ -25,6 +25,8 @@ public class Target : MonoBehaviour
             }
             else
             {
+                int trophyidx = Random.Range(0, trophies.Length);
+                GameObject trophy = trophies[trophyidx];
                 PlayerController.instance.score++;
                 Destroy(gameObject);
                 GameObject newTrophy = Instantiate(trophy);
@@ -40,6 +42,8 @@ public class Target : MonoBehaviour
             }
             else
             {
+                int trophyidx = Random.Range(0, trophies.Length);
+                GameObject trophy = trophies[trophyidx];
                 PlayerController.instance.score++;
                 Destroy(gameObject);
                 GameObject newTrophy = Instantiate(trophy);
@@ -57,6 +61,8 @@ public class Target : MonoBehaviour
             }
             else
             {
+                int trophyidx = Random.Range(0, trophies.Length);
+                GameObject trophy = trophies[trophyidx];
                 PlayerController.instance.score++;
                 Destroy(gameObject);
                 GameObject newTrophy = Instantiate(trophy);

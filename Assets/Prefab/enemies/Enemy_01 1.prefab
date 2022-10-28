@@ -176,7 +176,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthMax: 5
-  trophy: {fileID: 2393927835449034923, guid: d9446086814c3e94da9ed60660af5542, type: 3}
+  trophies:
+  - {fileID: 4833930186792467099, guid: 23349c1acd34834438cb71b071ca3953, type: 3}
+  - {fileID: 2129804818787935582, guid: c44da022615a3a742932adb845da4719, type: 3}
+  - {fileID: 6967996226009968113, guid: 55699d3181f86354193c87ae816b92ad, type: 3}
+  - {fileID: 7967466105569495355, guid: 1deb8d9e70c759b4c8be7306acc9df6a, type: 3}
+  - {fileID: 3613274979192294219, guid: d545dad574a428444977ff524d68db44, type: 3}
+  - {fileID: 5133727024626148910, guid: d230f0c6f9969114ea41bedd40de21aa, type: 3}
+  - {fileID: 66146995368077977, guid: e68096fa4da54ef4aaa76ca1ffc78d9c, type: 3}
+  - {fileID: 480178466960237735, guid: f30b349e73f96b542b139e580e2d60be, type: 3}
   health: 0
 --- !u!70 &-6409834666350386726
 CapsuleCollider2D:
