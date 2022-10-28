@@ -161,6 +161,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   EnemyBullet: {fileID: 7997605341090860911, guid: 3780c7b4177444966b6c7a169b310fd4, type: 3}
+  minFireDist: 5
   fireRate: 3
 --- !u!114 &3402428180204987723
 MonoBehaviour:

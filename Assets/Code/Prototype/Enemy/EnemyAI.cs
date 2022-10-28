@@ -13,12 +13,17 @@ public class EnemyAI : MonoBehaviour
     public Transform groundCheckPos;
     public LayerMask groundLayer;
     public GameObject EnemyBullet;
-
+    PlayerController target;
+    public float minFireDist;
     private bool mustTurn;
     public float fireRate;
     float nextFire;
+
+
+    
     void Start()
     {
+        target = GameObject.FindObjectOfType<PlayerController>();
         mustPatrol = true;
         nextFire = Time.time+fireRate;
     }
@@ -61,11 +66,18 @@ public class EnemyAI : MonoBehaviour
 
     void CheckIfTimetToFire()
     {
-        if (Time.time > nextFire)
+        float distance = Vector3.Distance(target.transform.position, transform.position);
+        
+
+        if (Time.time > nextFire && distance < minFireDist)
         {
+            Vector3 directionPlayerEnemy = target.transform.position - transform.position;
+            float radianBullet = Mathf.Atan2(directionPlayerEnemy.y, directionPlayerEnemy.x);
+            float angleBullet = radianBullet * Mathf.Rad2Deg;
+
             GameObject newProjectile = Instantiate(EnemyBullet);
             newProjectile.transform.position = transform.position;
-            newProjectile.transform.rotation = Quaternion.identity;
+            newProjectile.transform.rotation = Quaternion.Euler(0, 0, angleBullet);
             nextFire = Time.time + fireRate;
         }
     }
