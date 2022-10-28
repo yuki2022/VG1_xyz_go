@@ -142,6 +142,20 @@ public class PlayerController : MonoBehaviour
             GameObject newProjectile = Instantiate(ToxicCloud);
             newProjectile.transform.position = transform.position;
         }
+
+        //Prop 1: health bottle
+        if (Input.GetKeyDown(KeyCode.Alpha1) && BackPack.instance.hasprop(1) && health < healthMax)
+        {
+            health ++;
+            BackPack.instance.RemoveProp(1);
+        }
+
+        //Prop 2: mana bottle
+        if (Input.GetKeyDown(KeyCode.Alpha1) && BackPack.instance.hasprop(2) && mana < manaMax)
+        {
+            mana++;
+            BackPack.instance.RemoveProp(2);
+        }
     }
     void OnCollisionEnter2D(Collision2D other)
     {
@@ -180,28 +194,36 @@ public class PlayerController : MonoBehaviour
 
         if (other.gameObject.layer == LayerMask.NameToLayer("Trophy"))
         {
-            if (other.gameObject.GetComponent<manaBottle>())
+            if (other.gameObject.GetComponent<trophy1>())
             {
-                if (mana < manaMax)
-                {
-                    mana++;
-                }
+                BackPack.instance.AddTrophy(0);
+            }
+            else if (other.gameObject.GetComponent<trophy2>()) {
                 BackPack.instance.AddTrophy(1);
             }
-            else if (other.gameObject.GetComponent<healthBottle>()) {
-                if (health < healthMax)
-                {
-                    health++;
-                }
-                BackPack.instance.mytrophies.Enqueue(2);
-            }
-            else if (other.gameObject.GetComponent<EXPBottle>())
+            else if (other.gameObject.GetComponent<trophy3>())
             {
-                if (health < healthMax)
-                {
-                    health++;
-                }
-                BackPack.instance.mytrophies.Enqueue(3);
+                BackPack.instance.AddTrophy(2);
+            }
+            else if (other.gameObject.GetComponent<trophy4>())
+            {
+                BackPack.instance.AddTrophy(3);
+            }
+            else if (other.gameObject.GetComponent<trophy5>())
+            {
+                BackPack.instance.AddTrophy(4);
+            }
+            else if (other.gameObject.GetComponent<trophy6>())
+            {
+                BackPack.instance.AddTrophy(5);
+            }
+            else if (other.gameObject.GetComponent<trophy7>())
+            {
+                BackPack.instance.AddTrophy(6);
+            }
+            else if (other.gameObject.GetComponent<trophy8>())
+            {
+                BackPack.instance.AddTrophy(7);
             }
 
             Destroy(other.gameObject);
@@ -209,8 +231,27 @@ public class PlayerController : MonoBehaviour
 
         if (other.gameObject.layer == LayerMask.NameToLayer("Prop"))
         {
-            //GameObject otherClone = Instantiate(other.gameObject);
-            //BackPack.instance.props.Add(other.gameObject);
+            if (other.gameObject.GetComponent<manaBottle>())
+            {
+                if (mana < manaMax)
+                {
+                    mana++;
+                }
+                BackPack.instance.AddProp(1);
+            }
+            else if (other.gameObject.GetComponent<healthBottle>())
+            {
+                if (health < healthMax)
+                {
+                    health++;
+                }
+                BackPack.instance.AddProp(2);
+            }
+            else if (other.gameObject.GetComponent<EXPBottle>())
+            {
+                BackPack.instance.AddProp(3);
+            }
+
             Destroy(other.gameObject);
         }
 
