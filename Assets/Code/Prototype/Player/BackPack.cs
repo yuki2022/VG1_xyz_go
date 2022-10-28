@@ -7,8 +7,10 @@ public class BackPack : MonoBehaviour
     public static BackPack instance;
 
     //State Tracking
-    public List<GameObject> trophies;
-    public List<GameObject> props;
+    public GameObject[] trophies;
+    public GameObject[] props;
+    public Queue<int> mytrophies = new Queue<int>();
+    public Queue<int> myprops = new Queue<int>();
 
     // Start is called before the first frame update
     void Awake()
@@ -21,5 +23,18 @@ public class BackPack : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void AddTrophy(int x)
+    {
+        mytrophies.Enqueue(x);
+        //print(x);
+        //print(mytrophies);
+    }
+
+    public int RemoveTrophy()
+    {
+        var trophyidx = BackPack.instance.mytrophies.Dequeue();
+        return trophyidx;
     }
 }
