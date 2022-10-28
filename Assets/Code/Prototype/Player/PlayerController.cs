@@ -158,6 +158,7 @@ public class PlayerController : MonoBehaviour
                 transform.position = currentCheckpoint;
                 health = healthMax;
                 healthbar.Sethealth(health);
+                PlayerController.instance.score-=5;
             }
         }
         if (other.gameObject.GetComponent<EnemyAI>())
@@ -173,6 +174,7 @@ public class PlayerController : MonoBehaviour
                 transform.position = currentCheckpoint;
                 health = healthMax;
                 healthbar.Sethealth(health);
+                PlayerController.instance.score -= 5;
             }
         }
 

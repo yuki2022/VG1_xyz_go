@@ -19,7 +19,7 @@ public class Target : MonoBehaviour
     void OnCollisionEnter2D(Collision2D other) {
        
         if (other.gameObject.GetComponent<Fireball>()) {
-            if (health > 0)
+            if (health > 1)
             {
                 health--;
             }
@@ -36,7 +36,7 @@ public class Target : MonoBehaviour
 
         if (other.gameObject.GetComponent<IceCone>())
         {
-            if (health > 0)
+            if (health > 1)
             {
                 health--;
             }
@@ -55,7 +55,7 @@ public class Target : MonoBehaviour
     {
         if (other.gameObject.GetComponent<ToxicCloud>())
         {
-            if (health > 0)
+            if (health > 1)
             {
                 health--;
             }
