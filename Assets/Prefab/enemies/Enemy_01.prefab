@@ -60,7 +60,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8012126751077767096}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.425, y: -2.93, z: 0.015814304}
+  m_LocalPosition: {x: -1.425, y: -2.93, z: -1}
   m_LocalScale: {x: 1, y: 0.9573, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -175,7 +175,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 066d22facf2304d148e0cfcd9d375410, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthMax: 5
+  healthMax: 3
   trophy: {fileID: 2393927835449034923, guid: d9446086814c3e94da9ed60660af5542, type: 3}
   health: 0
 --- !u!70 &-6409834666350386726

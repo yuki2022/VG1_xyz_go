@@ -20,11 +20,12 @@ public class Fireball : MonoBehaviour
         if (other.gameObject.GetComponent<Target>())
         {
             SoundManager.instance.PlaySoundHit();
+            PlayerController.instance.score++;
         }
         else if(other.gameObject.layer == LayerMask.NameToLayer("Ground")){
             SoundManager.instance.PlaySoundMiss();
         }
-        PlayerController.instance.score++;
+        
         //PlayerController.instance.EarnPoints(10);
         Destroy(gameObject);
     }
