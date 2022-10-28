@@ -16,8 +16,9 @@ public class WorkShopController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (BackPack.instance.trophies.Count > 0) {
-            Instantiate(BackPack.instance.trophies[0], dropPoint);
+        if (BackPack.instance.mytrophies != null && BackPack.instance.mytrophies.Count > 0) {
+            var trophyidx = BackPack.instance.RemoveTrophy();
+            Instantiate(BackPack.instance.trophies[trophyidx], dropPoint);
         }
     }
 }

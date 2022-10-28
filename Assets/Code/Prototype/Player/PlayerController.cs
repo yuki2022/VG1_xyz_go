@@ -145,14 +145,6 @@ public class PlayerController : MonoBehaviour
     }
     void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.GetComponent<manaBottle>())
-        {
-            if (mana < manaMax)
-            {
-                mana++;
-            }               
-        }
-
         if (other.gameObject.GetComponent<EnemyBullet>())
         {
             if (health > 1)
@@ -186,15 +178,37 @@ public class PlayerController : MonoBehaviour
 
         if (other.gameObject.layer == LayerMask.NameToLayer("Trophy"))
         {
-            //  GameObject otherClone = Instantiate(other.gameObject);
-            BackPack.instance.trophies.Add(other.gameObject);
+            if (other.gameObject.GetComponent<manaBottle>())
+            {
+                if (mana < manaMax)
+                {
+                    mana++;
+                }
+                BackPack.instance.AddTrophy(1);
+            }
+            else if (other.gameObject.GetComponent<healthBottle>()) {
+                if (health < healthMax)
+                {
+                    health++;
+                }
+                BackPack.instance.mytrophies.Enqueue(2);
+            }
+            else if (other.gameObject.GetComponent<EXPBottle>())
+            {
+                if (health < healthMax)
+                {
+                    health++;
+                }
+                BackPack.instance.mytrophies.Enqueue(3);
+            }
+
             Destroy(other.gameObject);
         }
 
         if (other.gameObject.layer == LayerMask.NameToLayer("Prop"))
         {
-            GameObject otherClone = Instantiate(other.gameObject);
-            BackPack.instance.props.Add(other.gameObject);
+            //GameObject otherClone = Instantiate(other.gameObject);
+            //BackPack.instance.props.Add(other.gameObject);
             Destroy(other.gameObject);
         }
 
