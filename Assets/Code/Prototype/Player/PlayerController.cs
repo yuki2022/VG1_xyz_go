@@ -29,8 +29,7 @@ public class PlayerController : MonoBehaviour
     public int money;
     public float fireRate = 0.5f;
     float nextFire = 0f;
-    public float damageRate = 5f;
-    float nextDamage = 0f;
+
     public bool isPaused;
 
 
@@ -273,6 +272,22 @@ public class PlayerController : MonoBehaviour
             currentCheckpoint = collision.transform.position;
             collision.GetComponent<Collider2D>().enabled = false;
         }
+
+
+        if (collision.gameObject.GetComponent<Traps>())
+        {
+            if (health >= 2)
+            {
+                health = health - 1;
+                SoundManager.instance.PlaySoundHurt();
+                healthbar.Sethealth(health);
+            }
+            else
+            {
+                respawn();
+            }
+        }
+
     }
 
     private void OnCollisionStay2D(Collision2D other)
@@ -292,21 +307,6 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-
-        if (other.gameObject.GetComponent<Traps>() && Time.time>nextDamage)
-        {
-            nextDamage = Time.time + damageRate;
-            if (health > 4)
-            {
-                health=health-1;
-                SoundManager.instance.PlaySoundHurt();
-                healthbar.Sethealth(health);
-            }
-            else
-            {
-                respawn();
-            }
-        }
     }
 
     public void EarnPoints(int pointAmount) {
