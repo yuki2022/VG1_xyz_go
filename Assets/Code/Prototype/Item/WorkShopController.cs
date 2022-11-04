@@ -18,7 +18,7 @@ public class WorkShopController : MonoBehaviour
     {
         if (BackPack.instance.mytrophies != null && BackPack.instance.mytrophies.Count > 0) {
             var trophyidx = BackPack.instance.RemoveTrophy();
-            Instantiate(BackPack.instance.trophies[trophyidx], dropPoint);
+            Instantiate(BackPack.instance.trophies[trophyidx], dropPoint.position, Quaternion.identity);
         }
     }
 }
