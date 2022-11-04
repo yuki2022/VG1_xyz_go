@@ -34,17 +34,6 @@ using UnityEngine.SceneManagement;
         public GameObject optionsMenu;
         public GameObject levelMenu;
 
-        // Start is called before the first frame update
-        void Start()
-        {
-
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
 
         void SwitchMenu(GameObject someMenu)
         {
@@ -73,4 +62,17 @@ using UnityEngine.SceneManagement;
         public void LoadLevel() {
             SceneManager.LoadScene (SceneManager.GetActiveScene().name);
         }
-    }
+
+
+        // Start is called before the first frame update
+        void Start()
+        {
+
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+
+        }
+}

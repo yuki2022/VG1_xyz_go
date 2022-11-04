@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
-//    MenuController menuControllerComponent;
+
     public static PlayerController instance;
 
     //Outlets
@@ -46,7 +46,7 @@ public class PlayerController : MonoBehaviour
         currentCheckpoint = transform.position;
         health = healthMax;
         mana = manaMax;
-        score = 0;
+        score = PlayerPrefs.GetInt("Score");
     }
 
     void Awake()
@@ -55,13 +55,16 @@ public class PlayerController : MonoBehaviour
     }
     void Update()
     {
+        //update UI
+        textScore.text = score.ToString();
+
         //pause
         if (isPaused)
         {
             return;
         }
 
-        //Escape-->menu
+        //k-->menu
         if (Input.GetKeyDown(KeyCode.K)) {
             MenuController.instance.Show();
         }
@@ -142,17 +145,24 @@ public class PlayerController : MonoBehaviour
             GameObject newProjectile = Instantiate(ToxicCloud);
             newProjectile.transform.position = transform.position;
         }
+
+        //Prop 1: health bottle
+        if (Input.GetKeyDown(KeyCode.Alpha1) && BackPack.instance.hasprop(1) && health < healthMax)
+        {
+            health ++;
+            BackPack.instance.RemoveProp(1);
+            healthbar.Sethealth(health);
+        }
+
+        //Prop 2: mana bottle
+        if (Input.GetKeyDown(KeyCode.Alpha2) && BackPack.instance.hasprop(2) && mana < manaMax)
+        {
+            mana++;
+            BackPack.instance.RemoveProp(2);
+        }
     }
     void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.GetComponent<manaBottle>())
-        {
-            if (mana < manaMax)
-            {
-                mana++;
-            }               
-        }
-
         if (other.gameObject.GetComponent<EnemyBullet>())
         {
             if (health > 1)
@@ -166,6 +176,7 @@ public class PlayerController : MonoBehaviour
                 transform.position = currentCheckpoint;
                 health = healthMax;
                 healthbar.Sethealth(health);
+                PlayerController.instance.score-=5;
             }
         }
         if (other.gameObject.GetComponent<EnemyAI>())
@@ -181,20 +192,62 @@ public class PlayerController : MonoBehaviour
                 transform.position = currentCheckpoint;
                 health = healthMax;
                 healthbar.Sethealth(health);
+                PlayerController.instance.score -= 5;
             }
         }
 
         if (other.gameObject.layer == LayerMask.NameToLayer("Trophy"))
         {
-            //  GameObject otherClone = Instantiate(other.gameObject);
-            BackPack.instance.trophies.Add(other.gameObject);
+            if (other.gameObject.GetComponent<trophy1>())
+            {
+                BackPack.instance.AddTrophy(1);
+            }
+            else if (other.gameObject.GetComponent<trophy2>()) {
+                BackPack.instance.AddTrophy(2);
+            }
+            else if (other.gameObject.GetComponent<trophy3>())
+            {
+                BackPack.instance.AddTrophy(3);
+            }
+            else if (other.gameObject.GetComponent<trophy4>())
+            {
+                BackPack.instance.AddTrophy(4);
+            }
+            else if (other.gameObject.GetComponent<trophy5>())
+            {
+                BackPack.instance.AddTrophy(5);
+            }
+            else if (other.gameObject.GetComponent<trophy6>())
+            {
+                BackPack.instance.AddTrophy(6);
+            }
+            else if (other.gameObject.GetComponent<trophy7>())
+            {
+                BackPack.instance.AddTrophy(7);
+            }
+            else if (other.gameObject.GetComponent<trophy8>())
+            {
+                BackPack.instance.AddTrophy(8);
+            }
+
             Destroy(other.gameObject);
         }
 
         if (other.gameObject.layer == LayerMask.NameToLayer("Prop"))
         {
-            GameObject otherClone = Instantiate(other.gameObject);
-            BackPack.instance.props.Add(other.gameObject);
+            if (other.gameObject.GetComponent<manaBottle>())
+            {
+                BackPack.instance.AddProp(1);
+            }
+            else if (other.gameObject.GetComponent<healthBottle>())
+            {
+                BackPack.instance.AddProp(2);
+            }
+            else if (other.gameObject.GetComponent<EXPBottle>())
+            {
+                BackPack.instance.AddProp(3);
+            }
+
             Destroy(other.gameObject);
         }
 
@@ -234,5 +287,12 @@ public class PlayerController : MonoBehaviour
     void UpdateDisplay()
     {
         textScore.text = score.ToString();//textMoney.text = money.ToString();
+    }
+
+
+    public void ResetScore()
+    {
+        score = 0;
+        PlayerPrefs.DeleteKey("Score");
     }
 }
