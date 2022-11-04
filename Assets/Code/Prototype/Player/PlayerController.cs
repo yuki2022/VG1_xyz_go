@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     public GameObject ToxicCloud;
     SpriteRenderer sprite;
     public TMP_Text textScore;
+    public TMP_Text textMoney;
     public HP_Bar healthbar;
 
     //Configuration
@@ -25,6 +26,7 @@ public class PlayerController : MonoBehaviour
     public int healthMax;
     public int manaMax;
     public int score;
+    public int money;
     public float fireRate = 0.5f;
     float nextFire = 0f;
     public bool isPaused;
@@ -47,6 +49,7 @@ public class PlayerController : MonoBehaviour
         health = healthMax;
         mana = manaMax;
         score = PlayerPrefs.GetInt("Score");
+        money = PlayerPrefs.GetInt("Money");
     }
 
     void Awake()
@@ -57,6 +60,7 @@ public class PlayerController : MonoBehaviour
     {
         //update UI
         textScore.text = score.ToString();
+        textMoney.text = money.ToString();
 
         //pause
         if (isPaused)
@@ -229,7 +233,8 @@ public class PlayerController : MonoBehaviour
             {
                 BackPack.instance.AddTrophy(8);
             }
-
+            money+=5;
+            PlayerPrefs.SetInt("Money", PlayerController.instance.money);
             Destroy(other.gameObject);
         }
 
@@ -247,7 +252,8 @@ public class PlayerController : MonoBehaviour
             {
                 BackPack.instance.AddProp(3);
             }
-
+            money+=2;
+            PlayerPrefs.SetInt("Money", PlayerController.instance.money);
             Destroy(other.gameObject);
         }
 
@@ -282,11 +288,13 @@ public class PlayerController : MonoBehaviour
 
     public void EarnPoints(int pointAmount) {
         score += pointAmount;
+        money += pointAmount;
     }
 
     void UpdateDisplay()
     {
-        textScore.text = score.ToString();//textMoney.text = money.ToString();
+        textScore.text = score.ToString();
+        textMoney.text = money.ToString();
     }
 
 
@@ -294,5 +302,11 @@ public class PlayerController : MonoBehaviour
     {
         score = 0;
         PlayerPrefs.DeleteKey("Score");
+    }
+
+    public void ResetMoney()
+    {
+        money = 0;
+        PlayerPrefs.DeleteKey("Money");
     }
 }
