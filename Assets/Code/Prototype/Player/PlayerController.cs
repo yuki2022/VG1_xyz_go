@@ -29,6 +29,8 @@ public class PlayerController : MonoBehaviour
     public int money;
     public float fireRate = 0.5f;
     float nextFire = 0f;
+    public float damageRate = 5f;
+    float nextDamage = 0f;
     public bool isPaused;
 
 
@@ -165,6 +167,15 @@ public class PlayerController : MonoBehaviour
             BackPack.instance.RemoveProp(2);
         }
     }
+
+
+    void respawn()
+    {
+        transform.position = currentCheckpoint;
+        health = healthMax;
+        healthbar.Sethealth(health);
+        PlayerController.instance.score -= 5;
+    }
     void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.GetComponent<EnemyBullet>())
@@ -172,16 +183,13 @@ public class PlayerController : MonoBehaviour
             if (health > 1)
             {
                 health--;
-                
+
                 healthbar.Sethealth(health);
             }
             else
-            {
-                transform.position = currentCheckpoint;
-                health = healthMax;
-                healthbar.Sethealth(health);
-                PlayerController.instance.score-=5;
-            }
+                respawn();
+
+            
         }
         if (other.gameObject.GetComponent<EnemyAI>())
         {
@@ -193,12 +201,11 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
-                transform.position = currentCheckpoint;
-                health = healthMax;
-                healthbar.Sethealth(health);
-                PlayerController.instance.score -= 5;
+                respawn();
             }
         }
+
+
 
         if (other.gameObject.layer == LayerMask.NameToLayer("Trophy"))
         {
@@ -282,6 +289,22 @@ public class PlayerController : MonoBehaviour
                 {
                     jumpsLeft = jumpsMax;
                 }
+            }
+        }
+
+
+        if (other.gameObject.GetComponent<Traps>() && Time.time>nextDamage)
+        {
+            nextDamage = Time.time + damageRate;
+            if (health > 4)
+            {
+                health=health-1;
+                SoundManager.instance.PlaySoundHurt();
+                healthbar.Sethealth(health);
+            }
+            else
+            {
+                respawn();
             }
         }
     }
