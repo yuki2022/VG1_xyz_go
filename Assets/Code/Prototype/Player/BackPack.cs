@@ -14,7 +14,11 @@ public class BackPack : MonoBehaviour
 
     // Start is called before the first frame update
     void Awake()
-    {       
+    {
+        if (instance && instance != this)
+        {
+            Destroy(gameObject);
+        }
         instance = this;
         DontDestroyOnLoad(gameObject);
         myprops = new int[props.Length];
@@ -22,10 +26,7 @@ public class BackPack : MonoBehaviour
         {
             myprops[i] = 0;
         }
-        if (instance && instance != this)
-        {
-            Destroy(gameObject);
-        }
+        
     }
 
     // Update is called once per frame
@@ -43,6 +44,18 @@ public class BackPack : MonoBehaviour
     public int RemoveTrophy()
     {
         var trophyidx = BackPack.instance.mytrophies.Dequeue();
+        return trophyidx;
+    }
+
+    public void SkipTrophy()
+    {
+        var trophyidx = RemoveTrophy();
+        mytrophies.Enqueue(trophyidx);
+    }
+
+    public int GetFirst()
+    {
+        var trophyidx = BackPack.instance.mytrophies.Peek();
         return trophyidx;
     }
 
