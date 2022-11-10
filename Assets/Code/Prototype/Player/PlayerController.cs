@@ -36,7 +36,7 @@ public class PlayerController : MonoBehaviour
     //State Tracking
     int jumpsLeft;
     public int health;
-    int mana;
+    public int mana;
     public Vector3 currentCheckpoint;
 
 
@@ -47,6 +47,7 @@ public class PlayerController : MonoBehaviour
         _rb = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
         currentCheckpoint = transform.position;
+
         health = healthMax;
         mana = manaMax;
         score = PlayerPrefs.GetInt("Score");
@@ -182,7 +183,7 @@ public class PlayerController : MonoBehaviour
             if (health > 1)
             {
                 health--;
-
+                
                 healthbar.Sethealth(health);
             }
             else
@@ -332,4 +333,5 @@ public class PlayerController : MonoBehaviour
         money = 0;
         PlayerPrefs.DeleteKey("Money");
     }
+
 }

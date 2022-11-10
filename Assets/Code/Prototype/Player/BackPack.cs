@@ -15,12 +15,13 @@ public class BackPack : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        DontDestroyOnLoad(gameObject);
         if (instance && instance != this)
         {
             Destroy(gameObject);
         }
         instance = this;
-        DontDestroyOnLoad(gameObject);
+        
         myprops = new int[props.Length];
         for (int i = 0; i < myprops.Length; i++)
         {

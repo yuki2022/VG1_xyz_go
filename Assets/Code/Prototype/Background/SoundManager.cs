@@ -14,6 +14,10 @@ using UnityEngine;
 
         void Awake()
         {
+            //if(instance && instance != this)
+            //{
+                //Destroy(gameObject);
+            //}
             instance = this;
             DontDestroyOnLoad(gameObject);
         }
