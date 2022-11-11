@@ -11,6 +11,7 @@ public class EnemyAI : MonoBehaviour
     public Rigidbody2D rb;
     public float walkSpeed;
     public Transform groundCheckPos;
+    public Transform wallCheckPos;
     public LayerMask groundLayer;
     public GameObject EnemyBullet;
     PlayerController target;
@@ -42,7 +43,7 @@ public class EnemyAI : MonoBehaviour
     {
         if (mustPatrol)
         {
-            mustTurn = !Physics2D.OverlapCircle(groundCheckPos.position, 0.2f, groundLayer);
+            mustTurn = !Physics2D.OverlapCircle(groundCheckPos.position, 0.2f, groundLayer) || Physics2D.OverlapCircle(wallCheckPos.position, 0.2f, groundLayer);
         }
     }
 
