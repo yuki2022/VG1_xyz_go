@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
 
@@ -20,11 +21,12 @@ public class PlayerController : MonoBehaviour
     public TMP_Text textScore;
     public TMP_Text textMoney;
     public HP_Bar healthbar;
+    public Image manabar;
 
     //Configuration
     public int jumpsMax;
     public int healthMax;
-    public int manaMax;
+    public float manaMax;
     public int score;
     public int money;
     public float fireRate = 0.5f;
@@ -36,7 +38,7 @@ public class PlayerController : MonoBehaviour
     //State Tracking
     int jumpsLeft;
     public int health;
-    public int mana;
+    public float mana;
     public Vector3 currentCheckpoint;
 
 
@@ -50,6 +52,7 @@ public class PlayerController : MonoBehaviour
 
         health = healthMax;
         mana = manaMax;
+        manabar.fillAmount = mana / manaMax;
         score = PlayerPrefs.GetInt("Score");
         money = PlayerPrefs.GetInt("Money");
     }
@@ -139,6 +142,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Q) & mana > 0)
         {
             mana--;
+            manabar.fillAmount = mana / manaMax;
             GameObject newProjectile = Instantiate(icecone);
             newProjectile.transform.position = transform.position;
             newProjectile.transform.rotation = aimPivot.rotation;
@@ -148,6 +152,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.W) & mana > 2)
         {
             mana -= 3;
+            manabar.fillAmount = mana / manaMax;
             GameObject newProjectile = Instantiate(ToxicCloud);
             newProjectile.transform.position = transform.position;
         }
@@ -164,6 +169,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha2) && BackPack.instance.hasprop(2) && mana < manaMax)
         {
             mana++;
+            manabar.fillAmount = mana / manaMax;
             BackPack.instance.RemoveProp(2);
         }
     }
@@ -247,11 +253,11 @@ public class PlayerController : MonoBehaviour
 
         if (other.gameObject.layer == LayerMask.NameToLayer("Prop"))
         {
-            if (other.gameObject.GetComponent<manaBottle>())
+            if (other.gameObject.GetComponent<healthBottle>())
             {
                 BackPack.instance.AddProp(1);
             }
-            else if (other.gameObject.GetComponent<healthBottle>())
+            else if (other.gameObject.GetComponent<manaBottle>())
             {
                 BackPack.instance.AddProp(2);
             }
@@ -333,5 +339,6 @@ public class PlayerController : MonoBehaviour
         money = 0;
         PlayerPrefs.DeleteKey("Money");
     }
+
 
 }
