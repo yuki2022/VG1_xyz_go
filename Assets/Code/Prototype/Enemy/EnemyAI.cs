@@ -19,12 +19,15 @@ public class EnemyAI : MonoBehaviour
     private bool mustTurn;
     public float fireRate;
     float nextFire;
+    Animator animator;
 
 
     
     void Start()
     {
         target = GameObject.FindObjectOfType<PlayerController>();
+        rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
         mustPatrol = true;
         nextFire = Time.time+fireRate;
     }
@@ -41,6 +44,7 @@ public class EnemyAI : MonoBehaviour
 
     private void FixedUpdate()
     {
+        animator.SetFloat("Speed", rb.velocity.magnitude);
         if (mustPatrol)
         {
             mustTurn = !Physics2D.OverlapCircle(groundCheckPos.position, 0.2f, groundLayer) || Physics2D.OverlapCircle(wallCheckPos.position, 0.2f, groundLayer);
