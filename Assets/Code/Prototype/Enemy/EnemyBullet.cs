@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyBullet : MonoBehaviour
 {
-    public float moveSpeed = 2f;
+    public float moveSpeed = 6f;
     PlayerController target;
     Rigidbody2D rb;
     Vector2 moveDirection;
@@ -16,7 +16,7 @@ public class EnemyBullet : MonoBehaviour
         target = GameObject.FindObjectOfType<PlayerController>();
         moveDirection = (target.transform.position - transform.position).normalized * moveSpeed;
         rb.velocity = new Vector2(moveDirection.x, moveDirection.y);
-        Destroy(gameObject, 7f);
+        Destroy(gameObject, 2f);
         
     }
 
