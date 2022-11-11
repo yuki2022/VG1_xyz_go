@@ -10,10 +10,10 @@ public class pot : MonoBehaviour
 
     //State Tracking
     public int gold;
-    public int wood;
-    public int water;
-    public int fire;
-    public int ground;
+    public int ability;
+    public int flesh;
+    // public int fire;
+    public int spirit;
     public int thunder;
     public int wind;
 
@@ -26,25 +26,102 @@ public class pot : MonoBehaviour
     void clearPot()
     {
         gold = 0;
-        wood = 0;
-        water = 0;
-        fire = 0;
-        ground = 0;
+        flesh = 0;
+        ability = 0;
+        // fire = 0;
+        spirit = 0;
         thunder = 0;
         wind = 0;
     }
+
+    //"fish", "horn", "feather", "skeleton", "carrot", "pearl", "mineral", "egg"
+    //health, mana, exp, sword, skeleton, thunder, shield, swift
 
     void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Trophy"))
         {
+            if (other.gameObject.GetComponent<trophy1>())
+            {
+                flesh += 3;
+                ability += 1;
+            }
+            else if (other.gameObject.GetComponent<trophy2>())
+            {
+                thunder += 3;
+            }
+            else if (other.gameObject.GetComponent<trophy3>())
+            {
+                wind += 3;
+            }
+            else if (other.gameObject.GetComponent<trophy4>())
+            {
+                spirit += 5;
+            }
+            else if (other.gameObject.GetComponent<trophy5>())
+            {
+                flesh += 1;
+                ability += 1;
+                wind += 1;
+            }
+            else if (other.gameObject.GetComponent<trophy6>())
+            {
+                ability += 3;
+                spirit += 2;
+            }
+            else if (other.gameObject.GetComponent<trophy7>())
+            {
+                gold += 5;
+                thunder += 3;
+            }
+            else if (other.gameObject.GetComponent<trophy8>())
+            {
+                spirit += 3;
+                ability += 3;
+                flesh += 3;
+            }
             Destroy(other.gameObject);
+            
         }
     }
 
     public void refine()
     {
-        Instantiate(BackPack.instance.props[0], dropPoint.position, Quaternion.identity);
+        if (gold >= 10 && wind >= 3 && flesh >= 5)
+        {
+            //sword
+        }
+        else if (spirit >= 5 && ability >= 3)
+        {
+            //skeleton
+        }
+        else if(thunder >= 3 && ability >= 3)
+        {
+            //thunder
+        }
+        else if (wind >= 5)
+        {
+            //swift
+        }
+        else if (flesh >= 3 && ability >= 2)
+        {
+            //shield
+        }
+        else if (spirit >= 2)
+        {
+            //exp
+            Instantiate(BackPack.instance.props[2], dropPoint.position, Quaternion.identity);
+        }
+        else if (ability >= 2)
+        {
+            //mana
+            Instantiate(BackPack.instance.props[1], dropPoint.position, Quaternion.identity);
+        }
+        else if (flesh >= 2)
+        {
+            //health
+            Instantiate(BackPack.instance.props[0], dropPoint.position, Quaternion.identity);
+        }
         clearPot();
     }
 }

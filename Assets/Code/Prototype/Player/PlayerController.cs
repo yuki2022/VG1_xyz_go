@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
 
@@ -20,12 +21,12 @@ public class PlayerController : MonoBehaviour
     public TMP_Text textScore;
     public TMP_Text textMoney;
     public HP_Bar healthbar;
+    public Image manabar;
 
     //Configuration
     public int jumpsMax;
     public int healthMax;
-    public int manaMax;
-    public int score;
+    public float manaMax;
     public int money;
     public float fireRate = 0.5f;
     float nextFire = 0f;
@@ -36,7 +37,10 @@ public class PlayerController : MonoBehaviour
     //State Tracking
     int jumpsLeft;
     public int health;
-    int mana;
+    public float mana;
+    public int level;
+    public int exp;
+    public int levelUpThreshold;
     public Vector3 currentCheckpoint;
 
 
@@ -47,10 +51,37 @@ public class PlayerController : MonoBehaviour
         _rb = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
         currentCheckpoint = transform.position;
+
+        if (PlayerPrefs.HasKey("EXP")){
+            exp = PlayerPrefs.GetInt("EXP");
+        }
+        else
+        {
+            exp = 0;
+        }
+        if (PlayerPrefs.HasKey("LV"))
+        {
+            level = PlayerPrefs.GetInt("LV"); 
+        }
+        else
+        {
+            exp = 0;
+        }
+        if (PlayerPrefs.HasKey("Money"))
+        {
+            money = PlayerPrefs.GetInt("Money");
+        }
+        else
+        {
+            exp = 0;
+        }      
+
+        healthMax = healthMax + level;
+        manaMax += level;
+
         health = healthMax;
         mana = manaMax;
-        score = PlayerPrefs.GetInt("Score");
-        money = PlayerPrefs.GetInt("Money");
+        manabar.fillAmount = mana / manaMax;
     }
 
     void Awake()
@@ -60,7 +91,6 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         //update UI
-        textScore.text = score.ToString();
         textMoney.text = money.ToString();
 
         //pause
@@ -138,6 +168,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Q) & mana > 0)
         {
             mana--;
+            manabar.fillAmount = mana / manaMax;
             GameObject newProjectile = Instantiate(icecone);
             newProjectile.transform.position = transform.position;
             newProjectile.transform.rotation = aimPivot.rotation;
@@ -147,6 +178,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.W) & mana > 2)
         {
             mana -= 3;
+            manabar.fillAmount = mana / manaMax;
             GameObject newProjectile = Instantiate(ToxicCloud);
             newProjectile.transform.position = transform.position;
         }
@@ -163,7 +195,16 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha2) && BackPack.instance.hasprop(2) && mana < manaMax)
         {
             mana++;
+            manabar.fillAmount = mana / manaMax;
             BackPack.instance.RemoveProp(2);
+        }
+
+        //Prop 3: exp bottle
+        if (Input.GetKeyDown(KeyCode.Alpha3) && BackPack.instance.hasprop(3))
+        {
+            exp += 10;
+            updateExp();
+            BackPack.instance.RemoveProp(3);
         }
     }
 
@@ -173,7 +214,6 @@ public class PlayerController : MonoBehaviour
         transform.position = currentCheckpoint;
         health = healthMax;
         healthbar.Sethealth(health);
-        PlayerController.instance.score -= 5;
     }
     void OnCollisionEnter2D(Collision2D other)
     {
@@ -182,7 +222,7 @@ public class PlayerController : MonoBehaviour
             if (health > 1)
             {
                 health--;
-
+                
                 healthbar.Sethealth(health);
             }
             else
@@ -246,11 +286,11 @@ public class PlayerController : MonoBehaviour
 
         if (other.gameObject.layer == LayerMask.NameToLayer("Prop"))
         {
-            if (other.gameObject.GetComponent<manaBottle>())
+            if (other.gameObject.GetComponent<healthBottle>())
             {
                 BackPack.instance.AddProp(1);
             }
-            else if (other.gameObject.GetComponent<healthBottle>())
+            else if (other.gameObject.GetComponent<manaBottle>())
             {
                 BackPack.instance.AddProp(2);
             }
@@ -310,21 +350,44 @@ public class PlayerController : MonoBehaviour
     }
 
     public void EarnPoints(int pointAmount) {
-        score += pointAmount;
+        exp += pointAmount;
         money += pointAmount;
     }
 
     void UpdateDisplay()
     {
-        textScore.text = score.ToString();
+        updateExp();
         textMoney.text = money.ToString();
     }
 
-
-    public void ResetScore()
+    void updateExp()
     {
-        score = 0;
-        PlayerPrefs.DeleteKey("Score");
+        if (exp >= levelUpThreshold)
+        {
+            exp -= levelUpThreshold;
+            levelUp();
+        }
+
+        textScore.text = "LV: " + level + " EXP: " + exp + "/" + levelUpThreshold;
+    }
+
+    void levelUp()
+    {
+        level += 1;
+        levelUpThreshold += level * level * 5;
+        healthMax += 1;
+        manaMax += 1;
+        health = healthMax;
+        mana = manaMax;
+        healthbar.Sethealth(health);
+        manabar.fillAmount = mana / manaMax;
+    }
+
+
+    public void ResetLevel()
+    {
+        level = 0;
+        PlayerPrefs.DeleteKey("LV");
     }
 
     public void ResetMoney()
@@ -332,4 +395,6 @@ public class PlayerController : MonoBehaviour
         money = 0;
         PlayerPrefs.DeleteKey("Money");
     }
+
+
 }

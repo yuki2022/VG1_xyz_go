@@ -26,8 +26,8 @@ public class Target : MonoBehaviour
             {
                 int trophyidx = Random.Range(0, trophies.Length);
                 GameObject trophy = trophies[trophyidx];
-                PlayerController.instance.score++;
-                PlayerPrefs.SetInt("Score", PlayerController.instance.score);
+                PlayerController.instance.exp += 3;
+                PlayerPrefs.SetInt("EXP", PlayerController.instance.exp);
                 Destroy(gameObject);
                 GameObject newTrophy = Instantiate(trophy);
                 newTrophy.transform.position = transform.position;
@@ -44,8 +44,8 @@ public class Target : MonoBehaviour
             {
                 int trophyidx = Random.Range(0, trophies.Length);
                 GameObject trophy = trophies[trophyidx];
-                PlayerController.instance.score++;
-                PlayerPrefs.SetInt("Score", PlayerController.instance.score);
+                PlayerController.instance.exp += 3;
+                PlayerPrefs.SetInt("EXP", PlayerController.instance.exp);
                 Destroy(gameObject);
                 GameObject newTrophy = Instantiate(trophy);
                 newTrophy.transform.position = transform.position;
@@ -64,8 +64,8 @@ public class Target : MonoBehaviour
             {
                 int trophyidx = Random.Range(0, trophies.Length);
                 GameObject trophy = trophies[trophyidx];
-                PlayerController.instance.score++;
-                PlayerPrefs.SetInt("Score", PlayerController.instance.score);
+                PlayerController.instance.exp += 3;
+                PlayerPrefs.SetInt("EXP", PlayerController.instance.exp);
                 Destroy(gameObject);
                 GameObject newTrophy = Instantiate(trophy);
                 newTrophy.transform.position = transform.position;

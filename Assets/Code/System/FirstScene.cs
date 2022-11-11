@@ -9,6 +9,7 @@ public class FirstScene : MonoBehaviour
     {
         if (other.gameObject.GetComponent<PlayerController>())
         {
+            // PlayerPrefs.SetInt("Health", PlayerController.instance.health);
             SceneManager.LoadScene("Prototype");
         }
     }

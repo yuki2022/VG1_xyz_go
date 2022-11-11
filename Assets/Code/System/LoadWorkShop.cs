@@ -9,6 +9,7 @@ public class LoadWorkShop : MonoBehaviour
     {
         if (other.gameObject.GetComponent<PlayerController>())
         {
+            // PlayerPrefs.SetInt("Health", PlayerController.instance.health);
             SceneManager.LoadScene("workshop");
         }
     }

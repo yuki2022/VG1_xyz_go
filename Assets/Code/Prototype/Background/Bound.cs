@@ -11,7 +11,6 @@ public class Bound : MonoBehaviour
             player.transform.position = player.currentCheckpoint;
             player.health = player.healthMax;
             player.healthbar.Sethealth(player.health);
-            PlayerController.instance.score -= 5;
         }
     }    
 }
