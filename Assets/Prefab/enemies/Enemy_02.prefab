@@ -196,6 +196,7 @@ MonoBehaviour:
   EnemyBullet: {fileID: 503776860068377677, guid: ece7a0616a5da4b74972f2af62e20157, type: 3}
   minFireDist: 5
   fireRate: 5
+  Firing: 0
 --- !u!114 &3402428180204987723
 MonoBehaviour:
   m_ObjectHideFlags: 0

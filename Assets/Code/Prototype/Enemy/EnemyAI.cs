@@ -19,14 +19,20 @@ public class EnemyAI : MonoBehaviour
     private bool mustTurn;
     public float fireRate;
     float nextFire;
+    float tempSpeed;
+    public bool Firing=false;
+    Animator animator;
 
 
     
     void Start()
     {
         target = GameObject.FindObjectOfType<PlayerController>();
+        rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
         mustPatrol = true;
         nextFire = Time.time+fireRate;
+        
     }
 
     // Update is called once per frame
@@ -41,6 +47,9 @@ public class EnemyAI : MonoBehaviour
 
     private void FixedUpdate()
     {
+        animator.SetFloat("Speed", rb.velocity.magnitude);
+        animator.SetBool("Firing", Firing);
+
         if (mustPatrol)
         {
             mustTurn = !Physics2D.OverlapCircle(groundCheckPos.position, 0.2f, groundLayer) || Physics2D.OverlapCircle(wallCheckPos.position, 0.2f, groundLayer);
@@ -65,6 +74,24 @@ public class EnemyAI : MonoBehaviour
         mustPatrol = true;
     }
 
+    private void stop()
+    {
+        tempSpeed = walkSpeed;
+        walkSpeed = 0;
+    }
+
+    void go()
+    {
+        walkSpeed = tempSpeed;
+    }
+
+
+    IEnumerator waiter()
+    {
+        stop();
+        yield return new WaitForSeconds(0.5f);
+        go();
+    }
     void CheckIfTimetToFire()
     {
         float distance = Vector3.Distance(target.transform.position, transform.position);
@@ -72,6 +99,11 @@ public class EnemyAI : MonoBehaviour
 
         if (Time.time > nextFire && distance < minFireDist)
         {
+            Firing = true;
+            
+            StartCoroutine(waiter());
+            StopCoroutine(waiter());
+            
             Vector3 directionPlayerEnemy = target.transform.position - transform.position;
             float radianBullet = Mathf.Atan2(directionPlayerEnemy.y, directionPlayerEnemy.x);
             float angleBullet = radianBullet * Mathf.Rad2Deg;
@@ -80,6 +112,8 @@ public class EnemyAI : MonoBehaviour
             newProjectile.transform.position = transform.position;
             newProjectile.transform.rotation = Quaternion.Euler(0, 0, angleBullet);
             nextFire = Time.time + fireRate;
+            Firing = false;
+            animator.SetBool("Firing", Firing);
         }
     }
 
@@ -95,6 +129,10 @@ public class EnemyAI : MonoBehaviour
         {
             walkSpeed = walkSpeed/2;
             fireRate = 1000f;
+        }
+        if (other.gameObject.tag == "toxic cloud") {
+            walkSpeed = 0;
+            fireRate = 2000f;
         }
     }
 

@@ -181,6 +181,7 @@ public class PlayerController : MonoBehaviour
             manabar.fillAmount = mana / manaMax;
             GameObject newProjectile = Instantiate(ToxicCloud);
             newProjectile.transform.position = transform.position;
+            newProjectile.transform.rotation = aimPivot.rotation;
         }
 
         //Prop 1: health bottle

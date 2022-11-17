@@ -51,6 +51,23 @@ public class Target : MonoBehaviour
                 newTrophy.transform.position = transform.position;
             }
         }
+        if (other.gameObject.GetComponent<ToxicCloud>())
+        {
+            if (health > 2)
+            {
+                health-=3;
+            }
+            else
+            {
+                int trophyidx = Random.Range(0, trophies.Length);
+                GameObject trophy = trophies[trophyidx];
+                PlayerController.instance.exp += 3;
+                PlayerPrefs.SetInt("EXP", PlayerController.instance.exp);
+                Destroy(gameObject);
+                GameObject newTrophy = Instantiate(trophy);
+                newTrophy.transform.position = transform.position;
+            }
+        }
     }
     void OnTriggerEnter2D(Collider2D other)
     {
