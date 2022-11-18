@@ -28,6 +28,8 @@ public class Target : MonoBehaviour
                 GameObject trophy = trophies[trophyidx];
                 PlayerController.instance.exp += 3;
                 PlayerPrefs.SetInt("EXP", PlayerController.instance.exp);
+                //create an explosion
+                GameObject explosion = Instantiate(PlayerController.instance.fireballPrefab, transform.position, Quaternion.identity);
                 Destroy(gameObject);
                 GameObject newTrophy = Instantiate(trophy);
                 newTrophy.transform.position = transform.position;

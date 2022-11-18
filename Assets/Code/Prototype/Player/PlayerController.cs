@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
     public TMP_Text textMoney;
     public HP_Bar healthbar;
     public Image manabar;
+    public GameObject fireballPrefab;
 
     //Configuration
     public int jumpsMax;

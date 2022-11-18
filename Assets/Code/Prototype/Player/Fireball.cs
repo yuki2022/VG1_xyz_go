@@ -7,6 +7,7 @@ public class Fireball : MonoBehaviour
     //Outlets
     Rigidbody2D _rigidbody2D;
 
+
     // Start is called before the first frame update
     void Start()
     {
