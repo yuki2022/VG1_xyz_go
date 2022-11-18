@@ -9,10 +9,12 @@ public class Target : MonoBehaviour
 
     //State Tracking
     public int health;
+    public bool isToxic;
 
     void Start()
     {
-        health = healthMax;        
+        health = healthMax;
+        isToxic = false;
     }
 
     void OnCollisionEnter2D(Collision2D other) {
@@ -58,6 +60,7 @@ public class Target : MonoBehaviour
             if (health > 2)
             {
                 health-=3;
+                isToxic = true;
             }
             else
             {
