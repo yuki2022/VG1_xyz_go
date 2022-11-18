@@ -1757,7 +1757,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -7.31, y: -10.91}
+  m_AnchoredPosition: {x: -9.84, y: -10.91}
   m_SizeDelta: {x: 160, y: 33.4891}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &223626568
@@ -3465,6 +3465,51 @@ PrefabInstance:
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 2fedd6be77a4a4359bc55c5c1db189f0, type: 3}
+--- !u!1 &512202400
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 512202402}
+  - component: {fileID: 512202401}
+  m_Layer: 0
+  m_Name: Timer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &512202401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 512202400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa5112f94656c6643a2a6679f24b8bdc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeElapsed: 0
+--- !u!4 &512202402
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 512202400}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 158
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &514143958
 GameObject:
   m_ObjectHideFlags: 0
@@ -5019,6 +5064,7 @@ MonoBehaviour:
   healthMax: 0
   trophies: []
   health: 0
+  isToxic: 0
 --- !u!212 &707818000
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -24575,6 +24621,10 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2144921816297063336, guid: b625a794fb47bfb43a11b9632aaf43cc, type: 3}
+      propertyPath: Karthus
+      value: 
+      objectReference: {fileID: 4813395212259234546, guid: 5ad1ff77345ce494b99e2aea673e92d9, type: 3}
     - target: {fileID: 2144921816297063336, guid: b625a794fb47bfb43a11b9632aaf43cc, type: 3}
       propertyPath: icecone
       value: 

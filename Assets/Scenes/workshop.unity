@@ -2861,6 +2861,10 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2144921816297063336, guid: b625a794fb47bfb43a11b9632aaf43cc, type: 3}
+      propertyPath: Karthus
+      value: 
+      objectReference: {fileID: 4813395212259234546, guid: 5ad1ff77345ce494b99e2aea673e92d9, type: 3}
+    - target: {fileID: 2144921816297063336, guid: b625a794fb47bfb43a11b9632aaf43cc, type: 3}
       propertyPath: icecone
       value: 
       objectReference: {fileID: 8915953816624361238, guid: 6ce36e6a4c9a27b45ba6d88487c4f04e, type: 3}

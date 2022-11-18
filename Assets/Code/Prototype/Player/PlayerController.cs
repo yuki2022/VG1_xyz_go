@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour
     public HP_Bar healthbar;
     public Image manabar;
     public GameObject fireballPrefab;
+    public GameObject Karthus;
 
     //Configuration
     public int jumpsMax;
@@ -180,7 +181,17 @@ public class PlayerController : MonoBehaviour
         {
             mana -= 3;
             manabar.fillAmount = mana / manaMax;
-            GameObject newProjectile = Instantiate(ToxicCloud);
+            GameObject summon = Instantiate(ToxicCloud);
+            summon.transform.position = transform.position;
+            summon.transform.rotation = aimPivot.rotation;
+        }
+
+        //Ability 3: summon
+        if (Input.GetKeyDown(KeyCode.W) & mana > 2)
+        {
+            mana -= 3;
+            manabar.fillAmount = mana / manaMax;
+            GameObject newProjectile = Instantiate(Karthus);
             newProjectile.transform.position = transform.position;
             newProjectile.transform.rotation = aimPivot.rotation;
         }
