@@ -25,6 +25,8 @@ public class PlayerController : MonoBehaviour
     public GameObject fireballPrefab;
     public GameObject Karthus;
 
+    public GameObject hitbox;
+
     //Configuration
     public int jumpsMax;
     public int healthMax;
@@ -49,6 +51,7 @@ public class PlayerController : MonoBehaviour
     // Methods
     void Start()
     {
+
         
         _rb = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
@@ -243,7 +246,7 @@ public class PlayerController : MonoBehaviour
 
             
         }
-        if (other.gameObject.GetComponent<EnemyAI>())
+        if (other.gameObject.GetComponent<EnemyAI>() || other.gameObject.GetComponent<melee_enemyAI>())
         {
             if (health > 4)
             {
@@ -327,7 +330,7 @@ public class PlayerController : MonoBehaviour
         }
 
 
-        if (collision.gameObject.GetComponent<Traps>())
+        if (collision.gameObject.GetComponent<Traps>() || collision.gameObject.tag == "hitbox")
         {
             if (health >= 2)
             {
@@ -340,6 +343,7 @@ public class PlayerController : MonoBehaviour
                 respawn();
             }
         }
+        
 
     }
 
