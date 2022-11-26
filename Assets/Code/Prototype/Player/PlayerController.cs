@@ -202,6 +202,7 @@ public class PlayerController : MonoBehaviour
             health ++;
             BackPack.instance.RemoveProp(1);
             healthbar.Sethealth(health);
+            SoundManager.instance.PlaySoundHeal();
         }
 
         //Prop 2: mana bottle
@@ -210,6 +211,7 @@ public class PlayerController : MonoBehaviour
             mana++;
             manabar.fillAmount = mana / manaMax;
             BackPack.instance.RemoveProp(2);
+            SoundManager.instance.PlaySoundHeal();
         }
 
         //Prop 3: exp bottle
@@ -218,6 +220,7 @@ public class PlayerController : MonoBehaviour
             exp += 10;
             updateExp();
             BackPack.instance.RemoveProp(3);
+            SoundManager.instance.PlaySoundHeal();
         }
     }
 
