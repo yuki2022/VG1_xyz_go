@@ -7,7 +7,7 @@ public class FirstScene : MonoBehaviour
 {
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.GetComponent<PlayerController>())
+        if (other.gameObject.GetComponent<workshopPlayer>())
         {
             // PlayerPrefs.SetInt("Health", PlayerController.instance.health);
             SceneManager.LoadScene("Prototype");
