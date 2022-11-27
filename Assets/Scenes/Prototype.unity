@@ -1473,6 +1473,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy_03
       objectReference: {fileID: 0}
+    - target: {fileID: 387058861279221537, guid: f2cd6960122174d35bf6bf2deab0ab6e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 387058861279221541, guid: f2cd6960122174d35bf6bf2deab0ab6e, type: 3}
       propertyPath: m_RootOrder
       value: 19
@@ -4704,6 +4708,10 @@ PrefabInstance:
     - target: {fileID: 8012126751077767096, guid: 31a3e609a15954906a57a0f3e57bf7f8, type: 3}
       propertyPath: m_Name
       value: Enemy_01 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8012126751077767096, guid: 31a3e609a15954906a57a0f3e57bf7f8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8012126751077767100, guid: 31a3e609a15954906a57a0f3e57bf7f8, type: 3}
       propertyPath: m_RootOrder
@@ -10517,6 +10525,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy_01 1 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8012126751077767096, guid: 31a3e609a15954906a57a0f3e57bf7f8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8012126751077767100, guid: 31a3e609a15954906a57a0f3e57bf7f8, type: 3}
       propertyPath: m_RootOrder
       value: 35
@@ -10575,6 +10587,10 @@ PrefabInstance:
     - target: {fileID: 5322858726255503787, guid: 9efebecbdd80347178b0078bc9dd8218, type: 3}
       propertyPath: m_Name
       value: Enemy_04 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5322858726255503787, guid: 9efebecbdd80347178b0078bc9dd8218, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5322858726255503791, guid: 9efebecbdd80347178b0078bc9dd8218, type: 3}
       propertyPath: m_RootOrder
@@ -12052,6 +12068,10 @@ PrefabInstance:
     - target: {fileID: 5322858726255503787, guid: 9efebecbdd80347178b0078bc9dd8218, type: 3}
       propertyPath: m_Name
       value: Enemy_04
+      objectReference: {fileID: 0}
+    - target: {fileID: 5322858726255503787, guid: 9efebecbdd80347178b0078bc9dd8218, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5322858726255503791, guid: 9efebecbdd80347178b0078bc9dd8218, type: 3}
       propertyPath: m_RootOrder
@@ -24638,6 +24658,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 191491760}
     - target: {fileID: 2144921816297063336, guid: b625a794fb47bfb43a11b9632aaf43cc, type: 3}
+      propertyPath: Nocturne
+      value: 
+      objectReference: {fileID: 4813395212259234546, guid: 5ad1ff77345ce494b99e2aea673e92d9, type: 3}
+    - target: {fileID: 2144921816297063336, guid: b625a794fb47bfb43a11b9632aaf43cc, type: 3}
       propertyPath: aimPivot
       value: 
       objectReference: {fileID: 1564380399}
@@ -24665,6 +24689,10 @@ PrefabInstance:
       propertyPath: ToxicCloud
       value: 
       objectReference: {fileID: 6302180986880003825, guid: e73d9280e32544c47bfa851d295ac9b5, type: 3}
+    - target: {fileID: 2144921816297063336, guid: b625a794fb47bfb43a11b9632aaf43cc, type: 3}
+      propertyPath: fireballPrefab
+      value: 
+      objectReference: {fileID: 1220456028597637853, guid: 03f5f19d2782f4baaa38c2ad88aee289, type: 3}
     - target: {fileID: 2144921816297063336, guid: b625a794fb47bfb43a11b9632aaf43cc, type: 3}
       propertyPath: explosionPrefab
       value: 
@@ -25046,6 +25074,10 @@ PrefabInstance:
       propertyPath: trophy
       value: 
       objectReference: {fileID: 2393927835449034923, guid: d9446086814c3e94da9ed60660af5542, type: 3}
+    - target: {fileID: 3402428180204987723, guid: 2169b3bd546a83644b42e588dcf6597d, type: 3}
+      propertyPath: isToxic
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8012126751077767096, guid: 2169b3bd546a83644b42e588dcf6597d, type: 3}
       propertyPath: m_Name
       value: Enemy_01
