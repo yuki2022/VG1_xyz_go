@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
     public HP_Bar healthbar;
     public Image manabar;
     public GameObject fireballPrefab;
-    public GameObject Karthus;
+    public GameObject Nocturne;
 
     //Configuration
     public int jumpsMax;
@@ -187,13 +187,13 @@ public class PlayerController : MonoBehaviour
         }
 
         //Ability 3: summon
-        if (Input.GetKeyDown(KeyCode.W) & mana > 2)
+        if (Input.GetKeyDown(KeyCode.E) & mana > 2)
         {
             mana -= 3;
             manabar.fillAmount = mana / manaMax;
-            GameObject newProjectile = Instantiate(Karthus);
+            GameObject newProjectile = Instantiate(Nocturne);
             newProjectile.transform.position = transform.position;
-            newProjectile.transform.rotation = aimPivot.rotation;
+            newProjectile.transform.rotation = transform.rotation;
         }
 
         //Prop 1: health bottle
