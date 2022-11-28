@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Checkpoint
   - ice
+  - toxic cloud
   layers:
   - Default
   - TransparentFX
@@ -20,7 +21,7 @@ TagManager:
   - EnemyProjectile
   - Trophy
   - Prop
-  - 
+  - Ally
   - 
   - 
   - 

@@ -23,6 +23,9 @@ public class PlayerController : MonoBehaviour
     public HP_Bar healthbar;
     public Image manabar;
     public GameObject fireballPrefab;
+    public GameObject Nocturne;
+
+    public GameObject hitbox;
 
     //Configuration
     public int jumpsMax;
@@ -48,6 +51,7 @@ public class PlayerController : MonoBehaviour
     // Methods
     void Start()
     {
+
         
         _rb = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
@@ -180,9 +184,19 @@ public class PlayerController : MonoBehaviour
         {
             mana -= 3;
             manabar.fillAmount = mana / manaMax;
-            GameObject newProjectile = Instantiate(ToxicCloud);
+            GameObject summon = Instantiate(ToxicCloud);
+            summon.transform.position = transform.position;
+            summon.transform.rotation = aimPivot.rotation;
+        }
+
+        //Ability 3: summon
+        if (Input.GetKeyDown(KeyCode.E) & mana > 2)
+        {
+            mana -= 3;
+            manabar.fillAmount = mana / manaMax;
+            GameObject newProjectile = Instantiate(Nocturne);
             newProjectile.transform.position = transform.position;
-            newProjectile.transform.rotation = aimPivot.rotation;
+            newProjectile.transform.rotation = transform.rotation;
         }
 
         //Prop 1: health bottle
@@ -191,6 +205,7 @@ public class PlayerController : MonoBehaviour
             health ++;
             BackPack.instance.RemoveProp(1);
             healthbar.Sethealth(health);
+            SoundManager.instance.PlaySoundHeal();
         }
 
         //Prop 2: mana bottle
@@ -199,6 +214,7 @@ public class PlayerController : MonoBehaviour
             mana++;
             manabar.fillAmount = mana / manaMax;
             BackPack.instance.RemoveProp(2);
+            SoundManager.instance.PlaySoundHeal();
         }
 
         //Prop 3: exp bottle
@@ -207,6 +223,7 @@ public class PlayerController : MonoBehaviour
             exp += 10;
             updateExp();
             BackPack.instance.RemoveProp(3);
+            SoundManager.instance.PlaySoundHeal();
         }
     }
 
@@ -232,7 +249,7 @@ public class PlayerController : MonoBehaviour
 
             
         }
-        if (other.gameObject.GetComponent<EnemyAI>())
+        if (other.gameObject.GetComponent<EnemyAI>() || other.gameObject.GetComponent<melee_enemyAI>())
         {
             if (health > 4)
             {
@@ -316,7 +333,7 @@ public class PlayerController : MonoBehaviour
         }
 
 
-        if (collision.gameObject.GetComponent<Traps>())
+        if (collision.gameObject.GetComponent<Traps>() || collision.gameObject.tag == "hitbox")
         {
             if (health >= 2)
             {
@@ -329,6 +346,7 @@ public class PlayerController : MonoBehaviour
                 respawn();
             }
         }
+        
 
     }
 
