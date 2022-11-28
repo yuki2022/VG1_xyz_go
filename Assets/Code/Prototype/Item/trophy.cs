@@ -9,7 +9,6 @@ public class trophy : MonoBehaviour
     {
         if (other.gameObject.GetComponent<PlayerController>())
         {
-            SoundManager.instance.PlaySoundHeal();
             Destroy(gameObject);           
         }
     }
