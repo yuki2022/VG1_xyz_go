@@ -7,7 +7,7 @@ onBoardingDoNotAskAgain = true
 showPackageIndexes = false
 showStatusBar = false
 scopes = {
-	"last_search.EAB0C2BA" = "projectile"
+	"last_search.EAB0C2BA" = "arrow"
 	"OpenInspectorPreview.EAB0C2BA" = "0"
 	"currentGroup.EAB0C2BA" = "store"
 	"last_search.E6F67C7E" = ""
@@ -59,6 +59,7 @@ providers = {
 objectSelectors = {
 }
 recentSearches = [
+	"a"
 	"f"
 	"pl"
 ]
