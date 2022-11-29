@@ -90,22 +90,27 @@ public class pot : MonoBehaviour
         if (gold >= 10 && wind >= 3 && flesh >= 5)
         {
             //sword
+            Instantiate(BackPack.instance.props[7], dropPoint.position, Quaternion.identity);
         }
         else if (spirit >= 5 && ability >= 3)
         {
-            //skeleton
+            //noc
+            Instantiate(BackPack.instance.props[5], dropPoint.position, Quaternion.identity);
         }
         else if(thunder >= 3 && ability >= 3)
         {
-            //thunder
+            //scroll
+            Instantiate(BackPack.instance.props[6], dropPoint.position, Quaternion.identity);
         }
         else if (wind >= 5)
         {
-            //swift
+            //purple crystal
+            Instantiate(BackPack.instance.props[4], dropPoint.position, Quaternion.identity);
         }
         else if (flesh >= 3 && ability >= 2)
         {
-            //shield
+            //blue crystal
+            Instantiate(BackPack.instance.props[3], dropPoint.position, Quaternion.identity);
         }
         else if (spirit >= 2)
         {
