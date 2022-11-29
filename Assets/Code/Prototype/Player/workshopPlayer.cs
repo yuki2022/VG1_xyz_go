@@ -145,6 +145,26 @@ public class workshopPlayer : MonoBehaviour
             {
                 BackPack.instance.AddProp(3);
             }
+            else if (other.gameObject.GetComponent<blueCrystal>())
+            {
+                BackPack.instance.AddProp(4);
+            }
+            else if (other.gameObject.GetComponent<purpleCrystal>())
+            {
+                BackPack.instance.AddProp(5);
+            }
+            else if (other.gameObject.GetComponent<scroll>())
+            {
+                BackPack.instance.AddProp(6);
+            }
+            else if (other.gameObject.GetComponent<nocitem>())
+            {
+                BackPack.instance.AddProp(7);
+            }
+            else if (other.gameObject.GetComponent<sword>())
+            {
+                BackPack.instance.AddProp(8);
+            }
             Destroy(other.gameObject);
         }
 
