@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour
     public GameObject fireballPrefab;
     public GameObject Nocturne;
     public GameObject sword;
-
+    public GameObject popupMessage;
     public GameObject hitbox;
 
     //Configuration
@@ -119,7 +119,7 @@ public class PlayerController : MonoBehaviour
             MenuController.instance.Show();
         }
         UpdateDisplay();
-
+        
         //jump
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -424,6 +424,12 @@ public class PlayerController : MonoBehaviour
             {
                 respawn();
             }
+        }
+
+        if (collision.transform.tag == "princess")
+        {
+            Debug.Log("princess trigger");
+            popupMessage.SetActive(true);  
         }
         
 
