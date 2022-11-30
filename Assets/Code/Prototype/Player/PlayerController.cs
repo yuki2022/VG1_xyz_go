@@ -24,6 +24,7 @@ public class PlayerController : MonoBehaviour
     public Image manabar;
     public GameObject fireballPrefab;
     public GameObject Nocturne;
+    public GameObject sword;
 
     public GameObject hitbox;
 
@@ -42,6 +43,7 @@ public class PlayerController : MonoBehaviour
     int jumpsLeft;
     public int health;
     public float mana;
+    public int abilityPower;
     public int level;
     public int exp;
     public int levelUpThreshold;
@@ -87,6 +89,14 @@ public class PlayerController : MonoBehaviour
         health = healthMax;
         mana = manaMax;
         manabar.fillAmount = mana / manaMax;
+        abilityPower = 0;
+
+        if (BackPack.instance.hasprop(8))
+        {
+            GameObject newSword = Instantiate(sword);
+            newSword.transform.position = transform.position;
+            newSword.transform.rotation = aimPivot.rotation;
+        }
     }
 
     void Awake()
@@ -170,23 +180,45 @@ public class PlayerController : MonoBehaviour
         }
 
         //Ability 1: ice cone
-        if (Input.GetKeyDown(KeyCode.Q) & mana > 0)
+        if (Input.GetKeyDown(KeyCode.Q))
         {
-            mana--;
-            manabar.fillAmount = mana / manaMax;
-            GameObject newProjectile = Instantiate(icecone);
-            newProjectile.transform.position = transform.position;
-            newProjectile.transform.rotation = aimPivot.rotation;
+            if (BackPack.instance.hasprop(4))
+            {
+                GameObject newProjectile = Instantiate(icecone);
+                newProjectile.transform.position = transform.position;
+                newProjectile.transform.rotation = aimPivot.rotation;
+            }
+            else if(mana > 0)
+            {
+                mana--;
+                manabar.fillAmount = mana / manaMax;
+                GameObject newProjectile = Instantiate(icecone);
+                newProjectile.transform.position = transform.position;
+                newProjectile.transform.rotation = aimPivot.rotation;
+            }
+            
         }
 
         //Ability 2: toxic cloud
-        if (Input.GetKeyDown(KeyCode.W) & mana > 2)
+        if (Input.GetKeyDown(KeyCode.W) & mana > 1)
         {
-            mana -= 3;
-            manabar.fillAmount = mana / manaMax;
-            GameObject summon = Instantiate(ToxicCloud);
-            summon.transform.position = transform.position;
-            summon.transform.rotation = aimPivot.rotation;
+            if (BackPack.instance.hasprop(5))
+            {
+                mana -= 2;
+                manabar.fillAmount = mana / manaMax;
+                GameObject summon = Instantiate(ToxicCloud);
+                summon.transform.position = transform.position;
+                summon.transform.rotation = aimPivot.rotation;
+            }
+            else if (mana > 2)
+            {
+                mana -= 3;
+                manabar.fillAmount = mana / manaMax;
+                GameObject summon = Instantiate(ToxicCloud);
+                summon.transform.position = transform.position;
+                summon.transform.rotation = aimPivot.rotation;
+            }
+                
         }
 
         //Ability 3: summon
@@ -197,6 +229,18 @@ public class PlayerController : MonoBehaviour
             GameObject newProjectile = Instantiate(Nocturne);
             newProjectile.transform.position = transform.position;
             newProjectile.transform.rotation = transform.rotation;
+        }
+
+        //Ability 4; prop 6: ultsummon
+        if (Input.GetKeyDown(KeyCode.R) & BackPack.instance.hasprop(6))
+        {
+            for(int i = 0; i<3; i++)
+            {
+                GameObject newProjectile = Instantiate(Nocturne);
+                newProjectile.transform.position = transform.position;
+                newProjectile.transform.rotation = transform.rotation;
+            }
+            BackPack.instance.RemoveProp(6);
         }
 
         //Prop 1: health bottle
@@ -225,6 +269,13 @@ public class PlayerController : MonoBehaviour
             BackPack.instance.RemoveProp(3);
             SoundManager.instance.PlaySoundHeal();
         }
+
+        //Prop 7: scroll
+        if (Input.GetKeyDown(KeyCode.Alpha4) && BackPack.instance.hasprop(7))
+        {
+            abilityPower ++;
+            BackPack.instance.RemoveProp(7);
+        }
     }
 
 
@@ -233,6 +284,14 @@ public class PlayerController : MonoBehaviour
         transform.position = currentCheckpoint;
         health = healthMax;
         healthbar.Sethealth(health);
+        if (BackPack.instance.hasprop(4))
+        {
+            BackPack.instance.RemoveProp(4);
+        }
+        if (BackPack.instance.hasprop(5))
+        {
+            BackPack.instance.RemoveProp(5);
+        }
     }
     void OnCollisionEnter2D(Collision2D other)
     {
@@ -317,7 +376,27 @@ public class PlayerController : MonoBehaviour
             {
                 BackPack.instance.AddProp(3);
             }
-            money+=2;
+            else if (other.gameObject.GetComponent<blueCrystal>())
+            {
+                BackPack.instance.AddProp(4);
+            }
+            else if (other.gameObject.GetComponent<purpleCrystal>())
+            {
+                BackPack.instance.AddProp(5);
+            }
+            else if (other.gameObject.GetComponent<scroll>())
+            {
+                BackPack.instance.AddProp(6);
+            }
+            else if (other.gameObject.GetComponent<nocitem>())
+            {
+                BackPack.instance.AddProp(7);
+            }
+            else if (other.gameObject.GetComponent<sword>())
+            {
+                BackPack.instance.AddProp(8);
+            }
+            money +=2;
             PlayerPrefs.SetInt("Money", PlayerController.instance.money);
             Destroy(other.gameObject);
         }

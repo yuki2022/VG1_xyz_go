@@ -40,9 +40,10 @@ public class Target : MonoBehaviour
     void OnCollisionEnter2D(Collision2D other) {
        
         if (other.gameObject.GetComponent<Fireball>()) {
-            if (health > 1)
+            int damage = PlayerController.instance.abilityPower + 1;
+            if (health > damage)
             {
-                health--;
+                health -= damage;
             }
             else
             {
@@ -52,9 +53,10 @@ public class Target : MonoBehaviour
 
         if (other.gameObject.GetComponent<IceCone>())
         {
-            if (health > 1)
+            int damage = PlayerController.instance.abilityPower + 1;
+            if (health > damage)
             {
-                health--;
+                health -= damage;
             }
             else
             {
@@ -69,6 +71,14 @@ public class Target : MonoBehaviour
                 health -= 3;
             }
             else
+            {
+                die();
+            }
+        }
+
+        if (other.gameObject.GetComponent<sword>())
+        {
+            if (health <= 1)
             {
                 die();
             }

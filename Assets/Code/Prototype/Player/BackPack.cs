@@ -5,7 +5,6 @@ using UnityEngine;
 public class BackPack : MonoBehaviour
 {
     public static BackPack instance;
-
     //State Tracking
     public GameObject[] trophies;
     public GameObject[] props;
@@ -15,13 +14,17 @@ public class BackPack : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        DontDestroyOnLoad(gameObject);
-        if (instance && instance != this)
+        // If no Player ever existed, we are it.
+        if (instance == null)
+            instance = this;
+        // If one already exist, it's because it came from another level.
+        else if (instance != this)
         {
             Destroy(gameObject);
+            return;
         }
-        instance = this;
-        
+
+        DontDestroyOnLoad(gameObject);
         myprops = new int[props.Length];
         for (int i = 0; i < myprops.Length; i++)
         {
