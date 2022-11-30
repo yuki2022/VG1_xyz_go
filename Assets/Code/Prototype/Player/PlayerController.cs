@@ -24,6 +24,7 @@ public class PlayerController : MonoBehaviour
     public Image manabar;
     public GameObject fireballPrefab;
     public GameObject Nocturne;
+    public GameObject sword;
 
     public GameObject hitbox;
 
@@ -89,6 +90,13 @@ public class PlayerController : MonoBehaviour
         mana = manaMax;
         manabar.fillAmount = mana / manaMax;
         abilityPower = 0;
+
+        if (BackPack.instance.hasprop(8))
+        {
+            GameObject newSword = Instantiate(sword);
+            newSword.transform.position = transform.position;
+            newSword.transform.rotation = aimPivot.rotation;
+        }
     }
 
     void Awake()

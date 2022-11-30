@@ -76,6 +76,14 @@ public class Target : MonoBehaviour
             }
         }
 
+        if (other.gameObject.GetComponent<sword>())
+        {
+            if (health <= 1)
+            {
+                die();
+            }
+        }
+
     }
     void OnTriggerEnter2D(Collider2D other)
     {

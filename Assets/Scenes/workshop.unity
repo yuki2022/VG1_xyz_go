@@ -3184,6 +3184,65 @@ MonoBehaviour:
   dropPoint: {fileID: 1501877806}
   currentMat: {fileID: 1668287137}
   trophyName: []
+--- !u!1001 &1657571878
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 2
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1581192635505550305, guid: cfbb2049cac98624db251ff78ab2a5ef, type: 3}
+      propertyPath: m_RootOrder
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 1581192635505550305, guid: cfbb2049cac98624db251ff78ab2a5ef, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 6.1180353
+      objectReference: {fileID: 0}
+    - target: {fileID: 1581192635505550305, guid: cfbb2049cac98624db251ff78ab2a5ef, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.5288363
+      objectReference: {fileID: 0}
+    - target: {fileID: 1581192635505550305, guid: cfbb2049cac98624db251ff78ab2a5ef, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.23553179
+      objectReference: {fileID: 0}
+    - target: {fileID: 1581192635505550305, guid: cfbb2049cac98624db251ff78ab2a5ef, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1581192635505550305, guid: cfbb2049cac98624db251ff78ab2a5ef, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1581192635505550305, guid: cfbb2049cac98624db251ff78ab2a5ef, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1581192635505550305, guid: cfbb2049cac98624db251ff78ab2a5ef, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1581192635505550305, guid: cfbb2049cac98624db251ff78ab2a5ef, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1581192635505550305, guid: cfbb2049cac98624db251ff78ab2a5ef, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1581192635505550305, guid: cfbb2049cac98624db251ff78ab2a5ef, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6897029708403074023, guid: cfbb2049cac98624db251ff78ab2a5ef, type: 3}
+      propertyPath: m_Name
+      value: sword
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_AddedGameObjects: []
+  m_SourcePrefab: {fileID: 100100000, guid: cfbb2049cac98624db251ff78ab2a5ef, type: 3}
 --- !u!1001 &1666487478
 PrefabInstance:
   m_ObjectHideFlags: 0
