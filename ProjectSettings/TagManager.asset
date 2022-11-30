@@ -7,6 +7,8 @@ TagManager:
   - Checkpoint
   - ice
   - toxic cloud
+  - hitbox
+  - princess
   layers:
   - Default
   - TransparentFX
@@ -23,7 +25,7 @@ TagManager:
   - Prop
   - Ally
   - soul(sword)
-  - 
+  - princess
   - 
   - 
   - 

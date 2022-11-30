@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour
     public GameObject fireballPrefab;
     public GameObject Nocturne;
     public GameObject sword;
-
+    public GameObject popupMessage;
     public GameObject hitbox;
 
     //Configuration
@@ -119,7 +119,7 @@ public class PlayerController : MonoBehaviour
             MenuController.instance.Show();
         }
         UpdateDisplay();
-
+        
         //jump
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -357,8 +357,8 @@ public class PlayerController : MonoBehaviour
             {
                 BackPack.instance.AddTrophy(8);
             }
-            money+=5;
-            PlayerPrefs.SetInt("Money", PlayerController.instance.money);
+            exp+=5;
+            PlayerPrefs.SetInt("EXP", PlayerController.instance.exp);
             Destroy(other.gameObject);
         }
 
@@ -396,8 +396,8 @@ public class PlayerController : MonoBehaviour
             {
                 BackPack.instance.AddProp(8);
             }
-            money +=2;
-            PlayerPrefs.SetInt("Money", PlayerController.instance.money);
+            exp += 2;
+            PlayerPrefs.SetInt("EXP", PlayerController.instance.exp);
             Destroy(other.gameObject);
         }
 
@@ -424,6 +424,12 @@ public class PlayerController : MonoBehaviour
             {
                 respawn();
             }
+        }
+
+        if (collision.transform.tag == "princess")
+        {
+            Debug.Log("princess trigger");
+            popupMessage.SetActive(true);  
         }
         
 
@@ -489,10 +495,10 @@ public class PlayerController : MonoBehaviour
         PlayerPrefs.DeleteKey("LV");
     }
 
-    public void ResetMoney()
+    public void ResetExp()
     {
-        money = 0;
-        PlayerPrefs.DeleteKey("Money");
+        exp = 0;
+        PlayerPrefs.DeleteKey("EXP");
     }
 
 
